@@ -7,7 +7,7 @@ export default {
             { name: 'title', label: 'Your Job Title', placeholder: 'Software Developer' },
             { name: 'email', label: 'Email', type: 'email', placeholder: 'john.doe@example.com' },
             { name: 'phone', label: 'Phone', type: 'tel', placeholder: '+1234567890' },
-            { name: 'address', label: 'Address', placeholder: '123 Street, City, Country' },
+            // { name: 'address', label: 'Address', placeholder: '123 Street, City, Country' },
             { name: 'linkedin', label: 'Linked', placeholder: 'linkedin.com/in/johndoe' },
             { name: 'github', label: 'Github', placeholder: 'github.com/johndoe' },
             { name: 'blogs', label: 'Blogs', placeholder: 'github.com/johndoe' },
@@ -69,6 +69,18 @@ export default {
             { name: 'title', label: 'Project Title', placeholder: 'Project Name' },
             { name: 'url', label: 'Project Url', placeholder: 'https://example.com/project' },
             {
+                name: 'start',
+                label: 'Start Date',
+                type: 'month',
+                placeholder: 'MM/DD/YYYY',
+            },
+            {
+                name: 'end',
+                label: 'End Date',
+                type: 'month',
+                placeholder: 'MM/DD/YYYY',
+            },
+            {
                 name: 'description',
                 label: 'Now Describe What you did',
                 type: 'textarea',
@@ -115,23 +127,18 @@ export default {
                 type: 'select',
                 options: [
                     {
-                        
                         value: 'Elementary Proficiency',
                     },
                     {
-                        
                         value: 'Limited Working Proficiency',
                     },
                     {
-                        
                         value: 'Professional Working Proficiency',
                     },
                     {
-                        
                         value: 'Full Professional Proficiency',
                     },
                     {
-                        
                         value: 'Native or Bilingual Proficiency',
                     },
                 ],

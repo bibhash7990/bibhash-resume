@@ -1,0 +1,107 @@
+{
+    "resume": {
+        "contact": {
+            "name": "Bibhash lenka",
+            "email": "",
+            "phone": "",
+            "address": "",
+            "title": "Frontend Developer",
+            "linkedin": "",
+            "github": "",
+            "portfolio": ""
+        },
+        "summary": {
+            "summary": "Frontend Developer with 4+ years of experience building scalable, high-performance web applications using React, TypeScript, and Redux. Skilled in crafting clean, maintainable code with strong attention to UI/UX, accessibility, and responsive design. Proven ability to translate complex business requirements into seamless user experiences while collaborating effectively with cross-functional teams. Passionate about performance optimization, component reusability, and modern frontend architecture to deliver reliable, user-focused products that drive business value."
+        },
+        "education": [
+            {
+                "degree": "BE Computer Engineering",
+                "institution": "Prime institute of engineering and technology",
+                "start": "2016-06",
+                "end": "2020-08",
+                "location": "Navsari, Gujarat",
+                "gpa": "9.1/10"
+            },
+            {
+                "degree": "Higher secondary certificate",
+                "institution": "Gyan jyot vidyalaya",
+                "start": "2014-06",
+                "end": "2016-08",
+                "location": "Surat, Gujarat"
+            },
+            {
+                "degree": "Secondary school certificate",
+                "institution": "Adarsh hindi vidyalaya",
+                "start": "2013-06",
+                "end": "2014-06",
+                "location": "Surat, Gujarat"
+            }
+        ],
+        "experience": [
+            {
+                "role": "Sr Software developer",
+                "company": "TechFidants",
+                "location": "Surat",
+                "start": "2022-06",
+                "end": "2024-12",
+                "description": "Led the development of scalable React and TypeScript applications with a focus on performance and maintainability.\nCollaborated closely with designers and backend teams to deliver seamless, responsive user interfaces aligned with business goals.\nParticipated in daily stand-ups, sprint planning, and client meetings to gather requirements and provide progress updates.\nConducted code reviews and mentored junior developers on best practices in React, state management, and reusable component architecture.\nIntegrated RESTful and Fast API, managing complex state with Redux and React Query for efficient data handling.\nOptimized application performance, including bundle size reductions, lazy loading, and accessibility improvements.\nAssisted in designing frontend architecture to improve scalability and ease of maintenance across the codebase.\nContributed to UI/UX enhancements, ensuring cross-browser compatibility and pixel-perfect implementation from Figma designs."
+            },
+            {
+                "role": "Jr Software Developer",
+                "company": "Sourcecube Technology Pvt. Ltd.",
+                "location": "Surat, Gujarat",
+                "start": "2020-11",
+                "end": "2022-06",
+                "description": "Designed, developed, and maintained responsive web applications using React.js, ensuring seamless integration with RESTful APIs.\nOptimized application performance, adhered to best practices, and conducted thorough testing to deliver high-quality solutions.\nCollaborated within Agile teams, managed state using Redux, and actively participated in code reviews to enhance overall code quality and user experience."
+            },
+            {
+                "role": "Jr Software developer Trainee",
+                "company": "3Elixir software solution",
+                "location": "Surat, Gujarat",
+                "start": "2020-09",
+                "end": "2020-10",
+                "description": "Acquired foundational knowledge of React.js, Git workflows, and best practices for organizing and structuring project folders.\nStrengthened skills in HTML, CSS, and JavaScript by building interactive and visually appealing user interfaces."
+            }
+        ],
+        "projects": [
+            {
+                "title": "TripEase – Travel Booking & Management Platform",
+                "description": "TripEase is a comprehensive travel booking and management platform allowing users to search, book, and manage flights, hotels, and activities seamlessly. It provides personalized travel recommendations, itinerary management, and real-time updates for travelers, with an intuitive, mobile-friendly UI.\nBuilt a flexible search and filter system for flights, hotels, and activities using React, TypeScript, and React Query for efficient API data handling.\nDeveloped an interactive itinerary planner using React DnD to enable users to add, remove, and reorder plans before booking.\nAdded personalized destination and activity suggestions using API integration with user preference data stored in Redux.\nIntegrated live availability checks with REST and Fast APIs to ensure up-to-date booking information.\nImplemented secure online payment flows using Stripe (stripe-js, @stripe/react-stripe-js) and Razorpay SDK, ensuring seamless transactions and clear payment status handling.\nCreated a user dashboard with React Router and protected routes for managing trips, booking history, and profile updates.\nSet up notification systems using Firebase Cloud Messaging (FCM) and email notifications with SendGrid, keeping users informed about bookings and payments.\nAdded i18next for multi-language support and dynamic currency handling for international users.\nImplemented dark mode using React Context API and Tailwind CSS theming to enhance user comfort during nighttime browsing.",
+                "url": "https://www.skyscanner.co.in",
+                "start": "2022-06",
+                "end": "2024-12"
+            },
+            {
+                "title": "FinDash – Real-Time Financial Dashboard for Investment Tracking",
+                "description": "Integrated WebSocket connections to display live market data and portfolio updates in real-time.\nBuilt interactive data visualizations using Recharts and Chart.js for portfolio performance, asset allocation, and historical trends.\nImplemented advanced filtering, sorting, and searching of investment data for a seamless user experience.\nIntegrated RESTful  API to fetch user investment data and market feeds efficiently.\nUtilized Redux Toolkit for predictable state management and better maintainability.\nImplemented JWT-based authentication with role-based access control, ensuring secure and customized user views.\nAdded user notifications using Firebase Cloud Messaging (FCM) for price alerts and market movements.\nIntegrated Plaid API to securely connect and fetch user bank and investment account data.\nBuilt responsive UI components with Tailwind CSS, ensuring consistency across devices.\nParticipated in client meetings and sprint planning to align development with evolving business requirements.",
+                "url": "https://mint.intuit.com/",
+                "end": "2022-04",
+                "start": "2020-11"
+            }
+        ],
+        "skills": {
+            "skills": "React.js, JavaScript, Typescript, HTML5, CSS3, JSX, ES6+, Styled Components, SASS, Bootstrap, Material UI, Joy UI, Chakra UI, Tailwind CSS, Responsive Web Design, Cross-browser Compatibility, REST APIs, Git, GitHub, NPM/Yarn, Agile Methodology, UI/UX Design, Version Control, Deployment (Vercel, Netlify, Railway), and Web Performance Optimization."
+        },
+        "tools": {},
+        "certificates": [],
+        "languages": [
+            {
+                "language": "English",
+                "proficiency": "Professional Working Proficiency"
+            },
+            {
+                "language": "Hindi",
+                "proficiency": "Full Professional Proficiency"
+            },
+            {
+                "language": "Oriya",
+                "proficiency": "Native or Bilingual Proficiency"
+            },
+            {
+                "language": "Gujarati",
+                "proficiency": "Full Professional Proficiency"
+            }
+        ],
+        "saved": true
+    }
+}

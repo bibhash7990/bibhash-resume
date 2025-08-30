@@ -9,7 +9,7 @@ import { LuPlus } from 'react-icons/lu';
 import { useState } from 'react';
 import { FaArrowUp, FaCrop, FaMinimize, FaPencil, FaTrash } from 'react-icons/fa6';
 import { FaArrowDown } from 'react-icons/fa';
-import { TbArrowsMinimize } from "react-icons/tb";
+import { TbArrowsMinimize } from 'react-icons/tb';
 
 const MultiEditor = ({ tab }) => {
     const { fields } = ResumeFields[tab];
@@ -69,7 +69,9 @@ const MultiEditor = ({ tab }) => {
                         onClick={_ => setSelectedCard(i)}
                     >
                         <h3 className="flex items-center justify-between gap-5">
-                            <span className="mr-auto text-sm md:text-base truncate ">{Object.values(e)[0] || 'Untitled'}</span>
+                            <span className="mr-auto truncate text-sm md:text-base ">
+                                {Object.values(e)[0] || 'Untitled'}
+                            </span>
 
                             <button
                                 disabled={i == 0}

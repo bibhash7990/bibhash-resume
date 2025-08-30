@@ -81,67 +81,71 @@ const Education = ({ data }) => (
     </Section>
 );
 
-const Projects = ({ data }) => (
-    <Section title={'Projects'}>
-        {data.map((project, i) => (
-            <View key={i}>
-                <View style={styles.title_wrapper}>
-                    <Text style={styles.title}>{project.title}</Text>
-                    {/* <Text style={styles.date}>
-                        ({project.start} - {project.end})
-                    </Text> */}
-                </View>
+const Projects = ({ data }) => {
+    return (
+        <Section title={'Projects'}>
+            {data.map((project, i) => (
+                <View key={i}>
+                    <View style={styles.title_wrapper}>
+                        <Text style={styles.title}>{project.title}</Text>
+                        <Text style={styles.date}>
+                            {formatDate(project.start)} - {formatDate(project.end)}
+                        </Text>
+                    </View>
 
-                <View style={styles.subTitle_wrapper}>
-                    <Link
-                        style={{
-                            textDecoration: 'none',
-                            color: '#666',
-                        }}
-                        src={project.url}
-                    >
-                        {project.url}
-                    </Link>
-                </View>
+                    <View style={styles.subTitle_wrapper}>
+                        <Link
+                            style={{
+                                textDecoration: 'none',
+                                color: '#666',
+                            }}
+                            src={project.url}
+                        >
+                            {project.url}
+                        </Link>
+                    </View>
 
-                <View style={styles.lists}>
-                    {project.description?.split('\n').map((responsibility, i) => (
-                        <ListItem key={i}>{responsibility}</ListItem>
-                    ))}
-                </View>
+                    <View style={styles.lists}>
+                        {project.description?.split('\n').map((responsibility, i) => (
+                            <ListItem key={i}>{responsibility}</ListItem>
+                        ))}
+                    </View>
 
-                {i !== data.length - 1 && <View style={styles.line} />}
-            </View>
-        ))}
-    </Section>
-);
-
-const Experience = ({ data }) => (
-    <Section title={'Experience'}>
-        {data.map(({ role, start, end, company, location, description }, i) => (
-            <View key={i} style={styles?.wrappper}>
-                <View style={styles.title_wrapper}>
-                    <Text style={styles.title}>{role}</Text>
-                    <Text style={styles.date}>
-                        {formatDate(start)} - {formatDate(end)}
-                    </Text>
+                    {i !== data.length - 1 && <View style={styles.line} />}
                 </View>
+            ))}
+        </Section>
+    );
+};
 
-                <View style={styles.subTitle_wrapper}>
-                    <Text>{company}</Text>
-                    <Text>{location}</Text>
-                </View>
+const Experience = ({ data }) => {
+    return (
+        <Section title={'Experience'}>
+            {data.map(({ role, start, end, company, location, description }, i) => (
+                <View key={i} style={styles?.wrappper}>
+                    <View style={styles.title_wrapper}>
+                        <Text style={styles.title}>{role}</Text>
+                        <Text style={styles.date}>
+                            {formatDate(start)} - {formatDate(end) || 'Present'}
+                        </Text>
+                    </View>
 
-                <View style={styles.lists}>
-                    {description?.split('\n').map((responsibility, i) => (
-                        <ListItem key={i}>{responsibility}</ListItem>
-                    ))}
+                    <View style={styles.subTitle_wrapper}>
+                        <Text>{company}</Text>
+                        <Text>{location}</Text>
+                    </View>
+
+                    <View style={styles.lists}>
+                        {description?.split('\n').map((responsibility, i) => (
+                            <ListItem key={i}>{responsibility}</ListItem>
+                        ))}
+                    </View>
+                    {i !== data.length - 1 && <View style={styles.line} />}
                 </View>
-                {i !== data.length - 1 && <View style={styles.line} />}
-            </View>
-        ))}
-    </Section>
-);
+            ))}
+        </Section>
+    );
+};
 
 const Skills = ({ data }) => (
     <Section title={'skills'}>
@@ -155,11 +159,12 @@ const Preview = () => {
     const resumeData = useSelector(state => state.resume);
 
     const { contact, education, experience, projects, summary, skills } = resumeData;
+    console.log('✌️projects --->', projects);
 
     return (
         <div className="h-[40rem] w-[28rem] md:block">
             <div style={styles.page}>
-                <Header data={contact} />
+                {/* <Header data={contact} /> */}
 
                 {summary?.summary && (
                     <Section title={'Summery'}>

@@ -5,7 +5,7 @@ const defaultResume = {
         name: 'Bibhash lenka',
         email: 'bibhash.reactjsdev@gmail.com',
         phone: '7990721091',
-        address: '68 a shiv vatika near nansad gav kamrej surat',
+        // address: '68 a shiv vatika near nansad gav kamrej surat',
         title: 'Frontend Developer',
         linkedin: 'https://www.linkedin.com/in/bibhash-dev/',
         github: 'https://github.com/bibhash7990',

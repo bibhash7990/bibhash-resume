@@ -16,10 +16,10 @@ const Header = ({ data }) => {
             name: data['email'],
             value: `mailto:${data['email']}`,
         },
-        {
-            name: 'Address',
-            value: `https://www.google.com/maps/search/?q=${encodeURIComponent(data['address'])}`,
-        },
+        // {
+        //     name: 'Address',
+        //     value: `https://www.google.com/maps/search/?q=${encodeURIComponent(data['address'])}`,
+        // },
         {
             name: 'LinkedIn',
             value: data['linkedin'],
@@ -66,7 +66,7 @@ const Education = ({ data }) => (
                 <View style={styles.title_wrapper}>
                     <Text style={styles.title}>{degree}</Text>
                     <Text style={styles.date}>
-                        {formatDate(start)}- {formatDate(end)}
+                        {formatDate(start)}- {formatDate(end) || 'Present'}
                     </Text>
                 </View>
 
@@ -91,9 +91,9 @@ const Projects = ({ data }) => (
             <View key={i}>
                 <View style={styles.title_wrapper}>
                     <Text style={styles.title}>{project.title}</Text>
-                    {/* <Text style={styles.date}>
-                        ({project.start} - {project.end})
-                    </Text> */}
+                    <Text style={styles.date}>
+                        {formatDate(project.start)} - {formatDate(project.end)}
+                    </Text>
                 </View>
 
                 <View style={styles.subTitle_wrapper}>
@@ -130,7 +130,7 @@ const Experience = ({ data }) => (
                 <View style={styles.title_wrapper}>
                     <Text style={styles.title}>{role}</Text>
                     <Text style={styles.date}>
-                        {formatDate(start)} - {formatDate(end)}
+                        {formatDate(start)} - {formatDate(end) || 'Present'}
                     </Text>
                 </View>
 
@@ -209,6 +209,7 @@ const Languages = ({ data }) => (
 );
 
 const Resume = ({ data }) => {
+    console.log('✌️data --->', data);
     const { contact, education, experience, projects, summary, skills, certificates, languages, tools } = data;
 
     return (
