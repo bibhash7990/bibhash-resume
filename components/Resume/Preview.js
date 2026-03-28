@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Resume from './pdf';
 import { useSelector } from 'react-redux';
 import { CgSpinner } from 'react-icons/cg';
@@ -11,8 +11,6 @@ import { CgSpinner } from 'react-icons/cg';
 import { usePDF } from '@react-pdf/renderer';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { FaDownload, FaEye } from 'react-icons/fa6';
-
-pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.js', import.meta.url).toString();
 
 const Loader = () => (
     <div className="flex min-h-96 w-full items-center justify-center">
@@ -28,22 +26,29 @@ const preview = url => {
     );
 };
 
-const Preview = () => {
+/**
+ * PDF preview + usePDF only run in the browser after mount.
+ * Keeps @react-pdf/renderer off the Node/RSC path and avoids an extra dynamic() chunk.
+ */
+function ResumePdfViewer() {
     const parentRef = useRef(null);
     const resumeData = useSelector(state => state.resume);
-    let data = {
-        ...resumeData,
-        tools: {
-            tools: 'Figma, VsCode, ClickUp, PostMan, Github Desktop, Chrome DevTools, React Developer Tools, Redux DevTools, ESLint, Prettier, npm/yarn,',
-        },
-    };
 
-    const document = <Resume data={data} />;
+    useEffect(() => {
+        pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+            'pdfjs-dist/build/pdf.worker.min.js',
+            import.meta.url,
+        ).toString();
+    }, []);
+
+    const data = useMemo(() => ({ ...resumeData }), [resumeData]);
+
+    const document = useMemo(() => <Resume data={data} />, [data]);
     const [instance, updateInstance] = usePDF({ document });
 
     useEffect(() => {
-        if (resumeData.saved) updateInstance(document);
-    }, [resumeData.saved]);
+        updateInstance(document);
+    }, [document, updateInstance]);
 
     return (
         <div ref={parentRef} className="relative w-full md:max-w-[24rem] 2xl:max-w-[28rem]">
@@ -62,7 +67,7 @@ const Preview = () => {
 
             {!instance.loading && (
                 <div className="mt-4 flex justify-around">
-                    <button onClick={() => preview(instance.url)} className="btn text-sm">
+                    <button type="button" onClick={() => preview(instance.url)} className="btn text-sm">
                         <span>Preview</span>
                         <FaEye />
                     </button>
@@ -78,23 +83,22 @@ const Preview = () => {
             )}
         </div>
     );
-};
+}
 
-// const Preview = () => {
-//     const resumeData = useSelector(state => state.resume);
-//     const [data, setData] = useState(resumeData);
+export default function Preview() {
+    const [mounted, setMounted] = useState(false);
 
-//     useEffect(() => {
-//         if (resumeData.saved) setData(resumeData);
-//     }, [resumeData.saved]);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
-//     return (
-//         <div className="hidden h-[40rem] w-[28rem] md:block">
-//             <PDFViewer className="h-full w-full" showToolbar={true}>
-//                 <Resume data={data} />
-//             </PDFViewer>
-//         </div>
-//     );
-// };
+    if (!mounted) {
+        return (
+            <div className="relative flex min-h-96 w-full items-center justify-center md:max-w-[24rem] 2xl:max-w-[28rem]">
+                <Loader />
+            </div>
+        );
+    }
 
-export default Preview;
+    return <ResumePdfViewer />;
+}

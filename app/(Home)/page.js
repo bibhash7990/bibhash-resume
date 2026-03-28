@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ImgTilt from './ImgTilt';
 import { FaGithub } from 'react-icons/fa';
-import { IoIosRocket } from 'react-icons/io';
+import { LuRocket } from 'react-icons/lu';
 
 const page = () => {
     return (
@@ -32,7 +32,7 @@ const page = () => {
                 <div className="mt-8 flex flex-col items-center justify-start gap-3 md:mt-16 md:flex-row md:gap-8">
                     <Link href={'/editor'} className="btn-filled w-full md:w-auto">
                         <span>Create My Resume</span>
-                        <IoIosRocket />
+                        <LuRocket />
                     </Link>
 
                     <a href="https://github.com/devXprite/resumave" className="btn w-full md:w-auto">

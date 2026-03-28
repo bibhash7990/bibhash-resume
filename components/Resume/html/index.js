@@ -148,10 +148,16 @@ const Experience = ({ data }) => {
 };
 
 const Skills = ({ data }) => (
-    <Section title={'skills'}>
-        {data?.split('\n').map((line, i) => (
-            <Text style={{ fontSize: 11 }}>{line}</Text>
-        ))}
+    <Section title={'Skills'}>
+        {data
+            ?.split('\n')
+            .map(l => l.trim())
+            .filter(Boolean)
+            .map((line, i) => (
+                <Text key={i} style={{ fontSize: 11, marginBottom: 4 }}>
+                    {line}
+                </Text>
+            ))}
     </Section>
 );
 

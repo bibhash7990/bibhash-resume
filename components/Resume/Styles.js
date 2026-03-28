@@ -35,6 +35,15 @@ const styles = StyleSheet.create({
         marginBottom: 4,
     },
 
+    education_note: {
+        fontSize: 9,
+        color: '#666',
+        fontFamily: 'Times-Italic',
+        marginTop: 4,
+        marginBottom: 2,
+        lineHeight: 1.35,
+    },
+
     title_wrapper: {
         display: 'flex',
         flexDirection: 'row',

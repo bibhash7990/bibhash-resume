@@ -38,6 +38,14 @@ export default {
             { name: 'end', label: 'End Date', type: 'month', placeholder: 'MM/YYYY' },
             { name: 'location', label: 'Location', placeholder: 'City, Country' },
             { name: 'gpa', label: 'GPA', placeholder: '3.8/4.0' },
+            {
+                name: 'note',
+                label: 'Note (optional — e.g. career pivot context for ATS)',
+                type: 'textarea',
+                placeholder: 'Short context for recruiters (shown under this degree on the PDF)...',
+                span: true,
+                rows: 2,
+            },
         ],
     },
 
@@ -96,11 +104,27 @@ export default {
         fields: [
             {
                 name: 'skills',
-                label: 'Skills',
+                label: 'Skills (stack & practices)',
                 type: 'textarea',
-                placeholder: 'List your skills separated by commas...',
+                placeholder:
+                    'One line per category, e.g.\nLanguages: TypeScript, JavaScript\nFrontend: React, Vite, Tailwind\n…',
                 span: true,
-                rows: 3,
+                rows: 10,
+            },
+        ],
+    },
+
+    tools: {
+        name: 'Tools',
+        fields: [
+            {
+                name: 'tools',
+                label: 'Tools / software (desktop & workflow)',
+                type: 'textarea',
+                placeholder:
+                    'One line per category, e.g.\nDesign: Figma\nEditors: VS Code, Cursor\n…',
+                span: true,
+                rows: 8,
             },
         ],
     },

@@ -6,54 +6,86 @@ import ListItem from './ListItem';
 import styles from '../Styles';
 import formatDate from '@/utils/formatDate';
 
+const isPlaceholderSocial = v =>
+    !v?.trim() ||
+    /johndoe|example\.com|placeholder/i.test(v);
+
+const toHttpUrl = raw => {
+    const t = raw.trim();
+    if (!t) return '';
+    if (/^https?:\/\//i.test(t)) return t;
+    return `https://${t.replace(/^\/+/, '')}`;
+};
+
 const Header = ({ data }) => {
-    const contactLinks = [
-        {
-            name: data['phone'],
-            value: data['phone'],
-        },
-        {
-            name: data['email'],
-            value: `mailto:${data['email']}`,
-        },
-        // {
-        //     name: 'Address',
-        //     value: `https://www.google.com/maps/search/?q=${encodeURIComponent(data['address'])}`,
-        // },
-        {
-            name: 'LinkedIn',
-            value: data['linkedin'],
-        },
-        {
-            name: 'Github',
-            value: data['github'],
-        },
-        {
-            name: 'Blogs',
-            value: data['blogs'],
-        },
-        {
-            name: 'Twitter',
-            value: data['twitter'],
-        },
-        {
-            name: 'Portfolio',
-            value: data['portfolio'],
-        },
-    ];
+    const contactLinks = [];
+
+    if (data.phone?.trim()) {
+        const raw = data.phone.trim();
+        const digits = raw.replace(/\D/g, '');
+        const display = raw.startsWith('+') ? raw : digits.length === 10 ? `+91 ${digits}` : raw;
+        const href =
+            digits.length === 10 ? `tel:+91${digits}` : digits.length > 0 ? `tel:+${digits}` : `tel:${raw}`;
+        contactLinks.push({ key: 'phone', label: display, href });
+    }
+
+    if (data.email?.trim()) {
+        const e = data.email.trim();
+        contactLinks.push({ key: 'email', label: e, href: `mailto:${e}` });
+    }
+
+    if (data.linkedin?.trim() && !isPlaceholderSocial(data.linkedin)) {
+        contactLinks.push({
+            key: 'linkedin',
+            label: 'LinkedIn',
+            href: toHttpUrl(data.linkedin),
+        });
+    }
+
+    if (data.github?.trim() && !isPlaceholderSocial(data.github)) {
+        contactLinks.push({
+            key: 'github',
+            label: 'GitHub',
+            href: toHttpUrl(data.github),
+        });
+    }
+
+    if (data.blogs?.trim() && !isPlaceholderSocial(data.blogs)) {
+        contactLinks.push({
+            key: 'blogs',
+            label: 'Blogs',
+            href: toHttpUrl(data.blogs),
+        });
+    }
+
+    if (data.twitter?.trim() && !isPlaceholderSocial(data.twitter)) {
+        contactLinks.push({
+            key: 'twitter',
+            label: 'Twitter',
+            href: toHttpUrl(data.twitter),
+        });
+    }
+
+    if (data.portfolio?.trim() && !isPlaceholderSocial(data.portfolio)) {
+        contactLinks.push({
+            key: 'portfolio',
+            label: 'Portfolio',
+            href: toHttpUrl(data.portfolio),
+        });
+    }
 
     return (
         <Section>
             <Text style={styles.header__name}>{data.name}</Text>
-            <Text style={styles.sub__header__name}>(Frontend Developer)</Text>
+            {data.title ?
+                <Text style={styles.sub__header__name}>({data.title})</Text>
+            :   null}
             <View style={styles.header__links}>
-                {contactLinks
-                    .filter(obj => obj.value)
-                    .map(({ value, name }) => (
-                        <Link key={name} src={value} style={{ color: '#555' }}>
-                            {name}
-                        </Link>
-                    ))}
+                {contactLinks.map(({ key, label, href }) => (
+                    <Link key={key} src={href} style={styles.link}>
+                        {label}
+                    </Link>
+                ))}
             </View>
         </Section>
     );
@@ -61,7 +93,7 @@ const Header = ({ data }) => {
 
 const Education = ({ data }) => (
     <Section title={'Education'}>
-        {data.map(({ degree, institution, start, end, location, gpa }, i) => (
+        {data.map(({ degree, institution, start, end, location, gpa, note }, i) => (
             <View key={i} style={styles?.wrappper}>
                 <View style={styles.title_wrapper}>
                     <Text style={styles.title}>{degree}</Text>
@@ -78,6 +110,10 @@ const Education = ({ data }) => (
 
                     <Text style={styles.date}>{location}</Text>
                 </View>
+
+                {note?.trim() ?
+                    <Text style={styles.education_note}>{note.trim()}</Text>
+                :   null}
 
                 {i !== data.length - 1 && <View style={styles.line} />}
             </View>
@@ -150,23 +186,33 @@ const Experience = ({ data }) => (
     </Section>
 );
 
+const lineText = { fontSize: 10, marginBottom: 3 };
+
 const Skills = ({ data }) => (
-    <Section title={'skills'}>
-        {data?.split('\n').map((line, i) => (
-            <Text key={i} style={{ fontSize: 11 }}>
-                {line}
-            </Text>
-        ))}
+    <Section title={'Skills'}>
+        {data
+            ?.split('\n')
+            .map(l => l.trim())
+            .filter(Boolean)
+            .map((line, i) => (
+                <Text key={i} style={lineText}>
+                    {line}
+                </Text>
+            ))}
     </Section>
 );
 
 const Tools = ({ data }) => (
-    <Section title={'Tools/Software'}>
-        {data?.split('\n').map((line, i) => (
-            <Text key={i} style={{ fontSize: 11 }}>
-                {line}
-            </Text>
-        ))}
+    <Section title={'Tools / Software'}>
+        {data
+            ?.split('\n')
+            .map(l => l.trim())
+            .filter(Boolean)
+            .map((line, i) => (
+                <Text key={i} style={lineText}>
+                    {line}
+                </Text>
+            ))}
     </Section>
 );
 
@@ -209,7 +255,6 @@ const Languages = ({ data }) => (
 );
 
 const Resume = ({ data }) => {
-    console.log('✌️data --->', data);
     const { contact, education, experience, projects, summary, skills, certificates, languages, tools } = data;
 
     return (
