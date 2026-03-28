@@ -87,9 +87,9 @@ const defaultResume = {
         },
         {
             title: 'Skyline — Elevator Project Lifecycle Management',
-            url: 'https://dev-qa.skyline.onrender.com/',
+            url: 'https://dev-qa-skyline.onrender.com/',
             description:
-                'Core operations platform covering 10+ workflow areas (proposals MRL/hydraulic/traction, contracts, inspection and permit stages, client directory, Gmail-linked inbox, documents, payments, notifications). Extended one codebase to 2 branded client portals: Wyton Developers (https://portal.wytondevelopers.com/) and LIFTREX (https://portal.liftrex.com/).\nQA / internal: https://dev-qa.skyline.onrender.com/\nFrontend: React 18, TypeScript, Vite, React Router 7, Tailwind CSS, Radix UI, Redux Toolkit + redux-persist, TanStack React Query, Axios, React Hook Form + Yup, Framer Motion, Google Maps, Google OAuth.\nBackend: Hapi.js 21, Joi, Mongoose 8 / MongoDB, JWT, hapi-swagger, Winston, node-cron; 10+ integration touchpoints (AWS S3, Gmail API OAuth2, Twilio, Nodemailer, Dropbox, Adobe PDF, wkhtmltopdf, Handlebars, ExcelJS, etc.).',
+                'Core operations platform covering 10+ workflow areas (proposals MRL/hydraulic/traction, contracts, inspection and permit stages, client directory, Gmail-linked inbox, documents, payments, notifications). Extended one codebase to 2 branded client portals: Wyton Developers (https://portal.wytondevelopers.com/) and LIFTREX (https://portal.liftrex.com/).\nQA / internal: https://dev-qa-skyline.onrender.com/\nFrontend: React 18, TypeScript, Vite, React Router 7, Tailwind CSS, Radix UI, Redux Toolkit + redux-persist, TanStack React Query, Axios, React Hook Form + Yup, Framer Motion, Google Maps, Google OAuth.\nBackend: Hapi.js 21, Joi, Mongoose 8 / MongoDB, JWT, hapi-swagger, Winston, node-cron; 10+ integration touchpoints (AWS S3, Gmail API OAuth2, Twilio, Nodemailer, Dropbox, Adobe PDF, wkhtmltopdf, Handlebars, ExcelJS, etc.).',
         },
         {
             title: 'Revizze — IB Exam Prep Platform',
