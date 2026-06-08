@@ -35,10 +35,7 @@ function ResumePdfViewer() {
     const resumeData = useSelector(state => state.resume);
 
     useEffect(() => {
-        pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-            'pdfjs-dist/build/pdf.worker.min.js',
-            import.meta.url,
-        ).toString();
+        pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.js', import.meta.url).toString();
     }, []);
 
     const data = useMemo(() => ({ ...resumeData }), [resumeData]);
