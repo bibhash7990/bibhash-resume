@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import Section from './Section';
 import ListItem from './ListItem';
 import formatDate from '@/utils/formatDate';
+import { selectActiveResume } from '@/store/slices/resumeSlice';
 import { Link, Text, View } from './Renderer';
 
 const Header = ({ data }) => {
@@ -162,7 +163,7 @@ const Skills = ({ data }) => (
 );
 
 const Preview = () => {
-    const resumeData = useSelector(state => state.resume);
+    const resumeData = useSelector(selectActiveResume);
 
     const { contact, education, experience, projects, summary, skills } = resumeData;
     console.log('✌️projects --->', projects);

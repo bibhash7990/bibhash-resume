@@ -1,5 +1,6 @@
 import Editor from '@/components/Editor';
 import Preview from '@/components/Resume/Preview';
+import ResumeSwitcher from '@/components/ResumeSwitcher';
 import Tabs from '@/components/Tabs';
 
 const page = ({ searchParams: { tab = 'contact' } }) => {
@@ -7,6 +8,9 @@ const page = ({ searchParams: { tab = 'contact' } }) => {
         <div className="mx-auto mt-8 flex max-w-screen-xl flex-col-reverse gap-10 px-3 pb-8 md:mt-8 md:flex-row 2xl:mt-14 2xl:max-w-screen-2xl 2xl:gap-16">
             <Preview />
             <div className="flex-grow ">
+                <div className="mb-4">
+                    <ResumeSwitcher />
+                </div>
                 <Tabs activeTab={tab} />
                 <Editor tab={tab} />
             </div>

@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import resumeSlice from './slices/resumeSlice';
+import resumeReducer from './slices/resumeSlice';
 
-/** Bump when `defaultResume` in resumeSlice.js changes so clients load fresh template instead of stale localStorage. */
-export const RESUME_STORAGE_VERSION = 9;
+/** Bump when the state shape changes so clients reload fresh instead of loading stale localStorage. */
+export const RESUME_STORAGE_VERSION = 11;
 
 const loadState = () => {
     console.info('Loading State from Local Storage...');
@@ -36,7 +36,7 @@ const store = configureStore({
     devTools: true,
     preloadedState: loadState(),
     reducer: {
-        resume: resumeSlice,
+        resume: resumeReducer,
     },
 });
 

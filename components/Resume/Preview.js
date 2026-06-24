@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Resume from './pdf';
 import { useSelector } from 'react-redux';
+import { selectActiveResume } from '@/store/slices/resumeSlice';
 import { CgSpinner } from 'react-icons/cg';
 
 // import 'react-pdf/dist/Page/AnnotationLayer.css';
@@ -32,10 +33,11 @@ const preview = url => {
  */
 function ResumePdfViewer() {
     const parentRef = useRef(null);
-    const resumeData = useSelector(state => state.resume);
+    const resumeData = useSelector(selectActiveResume);
+    const activeProfileId = useSelector(state => state.resume.activeProfileId);
 
     useEffect(() => {
-        pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.js', import.meta.url).toString();
+        pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
     }, []);
 
     const data = useMemo(() => ({ ...resumeData }), [resumeData]);
@@ -48,7 +50,7 @@ function ResumePdfViewer() {
     }, [document, updateInstance]);
 
     return (
-        <div ref={parentRef} className="relative w-full md:max-w-[24rem] 2xl:max-w-[28rem]">
+        <div key={activeProfileId} ref={parentRef} className="relative w-full md:max-w-[24rem] 2xl:max-w-[28rem]">
             {instance.loading ?
                 <Loader />
             :   <Document loading={<Loader />} file={instance.url}>

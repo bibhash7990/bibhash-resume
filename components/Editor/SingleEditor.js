@@ -1,16 +1,15 @@
 'use client';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Input from '../UI/Input';
-import { useSelector } from 'react-redux';
-import { updateResumeValue } from '@/store/slices/resumeSlice';
+import { updateResumeValue, selectActiveTab } from '@/store/slices/resumeSlice';
 import ResumeFields from '@/config/ResumeFields';
 
 const SingleEditor = ({ tab }) => {
     const { fields } = ResumeFields[tab];
 
     const dispatch = useDispatch();
-    const resumeData = useSelector(state => state.resume[tab]);
+    const resumeData = useSelector(selectActiveTab(tab));
 
     const handleChange = e => {
         const { name, value } = e.target;

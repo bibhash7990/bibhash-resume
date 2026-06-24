@@ -1,13 +1,12 @@
 'use client';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Input from '../UI/Input';
-import { useSelector } from 'react-redux';
-import { addNewIndex, deleteIndex, moveIndex, updateResumeValue } from '@/store/slices/resumeSlice';
+import { addNewIndex, deleteIndex, moveIndex, updateResumeValue, selectActiveTab } from '@/store/slices/resumeSlice';
 import ResumeFields from '@/config/ResumeFields';
 import { LuPlus } from 'react-icons/lu';
 import { useState } from 'react';
-import { FaArrowUp, FaCrop, FaMinimize, FaPencil, FaTrash } from 'react-icons/fa6';
+import { FaArrowUp, FaPencil, FaTrash } from 'react-icons/fa6';
 import { FaArrowDown } from 'react-icons/fa';
 import { TbArrowsMinimize } from 'react-icons/tb';
 
@@ -16,7 +15,7 @@ const MultiEditor = ({ tab }) => {
     const [selectedCard, setSelectedCard] = useState(null);
 
     const dispatch = useDispatch();
-    const resumeData = useSelector(state => state.resume[tab]);
+    const resumeData = useSelector(selectActiveTab(tab));
 
     const handleChange = (e, i) => {
         const { name, value } = e.target;
