@@ -2,8 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Resume from './pdf';
-import { useSelector } from 'react-redux';
-import { selectActiveResume } from '@/store/slices/resumeSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectActiveResume, updateResumeValue } from '@/store/slices/resumeSlice';
 import { CgSpinner } from 'react-icons/cg';
 
 // import 'react-pdf/dist/Page/AnnotationLayer.css';
@@ -35,6 +35,7 @@ function ResumePdfViewer() {
     const parentRef = useRef(null);
     const resumeData = useSelector(selectActiveResume);
     const activeProfileId = useSelector(state => state.resume.activeProfileId);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
@@ -49,8 +50,49 @@ function ResumePdfViewer() {
         updateInstance(document);
     }, [document, updateInstance]);
 
+    const template = resumeData?.meta?.template || 'format1';
+
+    const handleTemplateChange = val => {
+        dispatch(
+            updateResumeValue({
+                tab: 'meta',
+                name: 'template',
+                value: val,
+            })
+        );
+    };
+
     return (
         <div key={activeProfileId} ref={parentRef} className="relative w-full md:max-w-[24rem] 2xl:max-w-[28rem]">
+            {/* Template Switcher */}
+            <div className="mb-4 flex flex-col gap-2 rounded-lg border border-gray-700 bg-gray-800/80 p-3 shadow-md backdrop-blur-sm">
+                <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">Layout Format</span>
+                <div className="flex gap-2">
+                    <button
+                        type="button"
+                        onClick={() => handleTemplateChange('format1')}
+                        className={`flex-1 rounded-md py-1.5 text-xs font-medium transition-all duration-200 ${
+                            template === 'format1'
+                                ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/25 ring-1 ring-primary-400'
+                                : 'bg-gray-700/50 text-gray-300 hover:bg-gray-700 hover:text-white'
+                        }`}
+                    >
+                        Format 1 (Classic)
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => handleTemplateChange('format2')}
+                        className={`flex-1 rounded-md py-1.5 text-xs font-medium transition-all duration-200 ${
+                            template === 'format2'
+                                ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/25 ring-1 ring-primary-400'
+                                : 'bg-gray-700/50 text-gray-300 hover:bg-gray-700 hover:text-white'
+                        }`}
+                    >
+                        Format 2 (One-page)
+                    </button>
+                </div>
+            </div>
+
             {instance.loading ?
                 <Loader />
             :   <Document loading={<Loader />} file={instance.url}>
@@ -101,3 +143,4 @@ export default function Preview() {
 
     return <ResumePdfViewer />;
 }
+

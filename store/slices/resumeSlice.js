@@ -131,7 +131,7 @@ const profile45 = {
     },
     tools: {
         tools:
-            'Design & UX: Figma\nEditors & AI IDEs: Visual Studio Code, Cursor, Kiro, Google Antigravity\nWorkflow: spec-driven development; AI-accelerated implementation with engineer-owned architecture, review, and release\nCollaboration & PM: ClickUp\nAPI debugging: Postman\nVersion control: Git, GitHub, GitHub Desktop\nQuality & debugging: ESLint, Prettier, Chrome DevTools, React Developer Tools, Redux DevTools\nPackage managers: npm, Yarn',
+            'Design & UX: Figma\nEditors & AI IDEs: Visual Studio Code, Cursor, Claude, Kiro, Google Antigravity\nWorkflow: spec-driven development; AI-accelerated implementation with engineer-owned architecture, review, and release\nCollaboration & PM: ClickUp, Jira\nAPI debugging: Postman\nVersion control: Git, GitHub, GitHub Desktop\nQuality & debugging: ESLint, Prettier, Chrome DevTools, React Developer Tools, Redux DevTools\nPackage managers: npm, Yarn',
     },
     certificates: [
         {
@@ -288,7 +288,7 @@ const profile25 = {
     },
     tools: {
         tools:
-            'Design & UX: Figma\nEditors & AI IDEs: Visual Studio Code, Cursor, Kiro, Google Antigravity\nWorkflow: spec-driven development; AI-accelerated implementation with engineer-owned architecture, review, and release\nCollaboration & PM: ClickUp\nAPI debugging: Postman\nVersion control: Git, GitHub, GitHub Desktop\nQuality & debugging: ESLint, Prettier, Chrome DevTools, React Developer Tools, Redux DevTools\nPackage managers: npm, Yarn',
+            'Design & UX: Figma\nEditors & AI IDEs: Visual Studio Code, Cursor, Claude, Kiro, Google Antigravity\nWorkflow: spec-driven development; AI-accelerated implementation with engineer-owned architecture, review, and release\nCollaboration & PM: ClickUp, Jira\nAPI debugging: Postman\nVersion control: Git, GitHub, GitHub Desktop\nQuality & debugging: ESLint, Prettier, Chrome DevTools, React Developer Tools, Redux DevTools\nPackage managers: npm, Yarn',
     },
     certificates: [
         {
@@ -460,7 +460,7 @@ const profile25Talleflow = {
     },
     tools: {
         tools:
-            'Design & UX: Figma\nEditors & AI IDEs: Visual Studio Code, Cursor, Kiro, Google Antigravity\nWorkflow: spec-driven development; AI-accelerated implementation with engineer-owned architecture, review, and release\nCollaboration & PM: ClickUp\nAPI debugging: Postman\nVersion control: Git, GitHub, GitHub Desktop\nQuality & debugging: ESLint, Prettier, Chrome DevTools, React Developer Tools, Redux DevTools\nPackage managers: npm, Yarn',
+            'Design & UX: Figma\nEditors & AI IDEs: Visual Studio Code, Cursor, Claude, Kiro, Google Antigravity\nWorkflow: spec-driven development; AI-accelerated implementation with engineer-owned architecture, review, and release\nCollaboration & PM: ClickUp, Jira\nAPI debugging: Postman\nVersion control: Git, GitHub, GitHub Desktop\nQuality & debugging: ESLint, Prettier, Chrome DevTools, React Developer Tools, Redux DevTools\nPackage managers: npm, Yarn',
     },
     certificates: [
         {

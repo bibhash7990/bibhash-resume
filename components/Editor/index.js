@@ -6,11 +6,16 @@ import SingleEditor from './SingleEditor';
 import MultiEditor from './MultiEditor';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearProfile, resetProfileToDefaults, saveResume } from '@/store/slices/resumeSlice';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 const TEMPLATE_IDS = ['profile-4-5-years', 'profile-2-5-years', 'profile-talleflow-25yr'];
 
 const Editor = ({ tab }) => {
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     const { multiple } = ResumeFields[tab];
     const dispatch = useDispatch();
     const activeProfileId = useSelector(state => state.resume.activeProfileId);
@@ -50,8 +55,15 @@ const Editor = ({ tab }) => {
         return () => clearInterval(interval);
     }, []);
 
+    const template = mounted ? (activeProfile?.meta?.template || 'format1') : 'format1';
+
     return (
         <>
+            {template === 'format2' && (
+                <div className="mb-4 rounded-lg border border-teal-800 bg-teal-950/40 p-3.5 text-sm text-teal-200 shadow-md">
+                    <span className="font-semibold">Format 2 (One-page layout) is active:</span> Technical Skills and Software Tools are combined in the PDF. Projects are automatically nested under their respective companies (Techfidants or Sourcecube) in the Professional Experience section. Certificates and Languages are hidden in this layout.
+                </div>
+            )}
             <form onSubmit={save} className="card my-8">
                 {multiple && <MultiEditor tab={tab} />}
                 {!multiple && <SingleEditor tab={tab} />}
@@ -74,3 +86,4 @@ const Editor = ({ tab }) => {
 };
 
 export default Editor;
+

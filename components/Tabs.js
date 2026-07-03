@@ -1,8 +1,26 @@
+'use client';
+
 import ResumeFields from '@/config/ResumeFields';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
+import { selectActiveResume } from '@/store/slices/resumeSlice';
+
+
+import { useState, useEffect } from 'react';
 
 const Tabs = ({ activeTab }) => {
-    const tabs = Object.keys(ResumeFields);
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const activeResume = useSelector(selectActiveResume);
+    const template = mounted ? (activeResume?.meta?.template || 'format1') : 'format1';
+
+    let tabs = Object.keys(ResumeFields);
+    if (template === 'format2') {
+        tabs = tabs.filter(tab => tab !== 'certificates' && tab !== 'languages');
+    }
 
     return (
         <div className="flex w-full gap-2 overflow-y-auto md:gap-3">
@@ -20,3 +38,4 @@ const Tabs = ({ activeTab }) => {
 };
 
 export default Tabs;
+
