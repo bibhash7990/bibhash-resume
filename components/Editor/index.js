@@ -59,9 +59,9 @@ const Editor = ({ tab }) => {
 
     return (
         <>
-            {template === 'format2' && (
+            {(template === 'format2' || template === 'format3') && (
                 <div className="mb-4 rounded-lg border border-teal-800 bg-teal-950/40 p-3.5 text-sm text-teal-200 shadow-md">
-                    <span className="font-semibold">Format 2 (One-page layout) is active:</span> Technical Skills and Software Tools are combined in the PDF. Projects are automatically nested under their respective companies (Techfidants or Sourcecube) in the Professional Experience section. Certificates and Languages are hidden in this layout.
+                    <span className="font-semibold">{template === 'format2' ? 'Format 2' : 'Format 3'} ({template === 'format2' ? 'One-page layout' : 'One-page merged layout'}) is active:</span> Technical Skills and Software Tools are combined in the PDF. Projects are automatically nested under their respective companies (Techfidants or Sourcecube) in the Professional Experience section. Certificates and Languages are hidden in this layout.
                 </div>
             )}
             <form onSubmit={save} className="card my-8">

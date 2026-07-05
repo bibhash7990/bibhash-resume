@@ -5,6 +5,8 @@ import resumeReducer from './slices/resumeSlice';
 export const RESUME_STORAGE_VERSION = 11;
 
 const loadState = () => {
+    if (typeof window === 'undefined') return undefined;
+
     console.info('Loading State from Local Storage...');
 
     try {
@@ -33,7 +35,7 @@ const loadState = () => {
 };
 
 const store = configureStore({
-    devTools: true,
+    devTools: process.env.NODE_ENV !== 'production',
     preloadedState: loadState(),
     reducer: {
         resume: resumeReducer,

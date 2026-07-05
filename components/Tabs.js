@@ -18,7 +18,7 @@ const Tabs = ({ activeTab }) => {
     const template = mounted ? (activeResume?.meta?.template || 'format1') : 'format1';
 
     let tabs = Object.keys(ResumeFields);
-    if (template === 'format2') {
+    if (template === 'format2' || template === 'format3') {
         tabs = tabs.filter(tab => tab !== 'certificates' && tab !== 'languages');
     }
 

@@ -90,6 +90,17 @@ function ResumePdfViewer() {
                     >
                         Format 2 (One-page)
                     </button>
+                    <button
+                        type="button"
+                        onClick={() => handleTemplateChange('format3')}
+                        className={`flex-1 rounded-md py-1.5 text-xs font-medium transition-all duration-200 ${
+                            template === 'format3'
+                                ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/25 ring-1 ring-primary-400'
+                                : 'bg-gray-700/50 text-gray-300 hover:bg-gray-700 hover:text-white'
+                        }`}
+                    >
+                        Format 3 (Merged)
+                    </button>
                 </div>
             </div>
 

@@ -18,69 +18,69 @@ const styles = StyleSheet.create({
     page: {
         backgroundColor: '#ffffff',
         color: '#333333',
-        paddingTop: 15,
-        paddingBottom: 15,
-        paddingLeft: 20,
-        paddingRight: 20,
+        paddingTop: 12,
+        paddingBottom: 12,
+        paddingLeft: 18,
+        paddingRight: 18,
         fontFamily: 'Helvetica',
     },
     header: {
         alignItems: 'center',
-        marginBottom: 4,
+        marginBottom: 2,
     },
     name: {
-        fontSize: 16,
+        fontSize: 15,
         fontFamily: 'Helvetica-Bold',
         color: '#111111',
         letterSpacing: 0.5,
     },
     title: {
-        fontSize: 9.5,
+        fontSize: 8.8,
         fontFamily: 'Helvetica-Bold',
         color: '#444444',
-        marginTop: 1,
+        marginTop: 0.5,
     },
     contactBar: {
         flexDirection: 'row',
         justifyContent: 'center',
         flexWrap: 'wrap',
-        gap: 6,
-        marginTop: 2,
+        gap: 5,
+        marginTop: 1.5,
     },
     contactLink: {
-        fontSize: 7.5,
+        fontSize: 7.2,
         color: '#333333',
         textDecoration: 'none',
     },
     contactSeparator: {
-        fontSize: 7.5,
+        fontSize: 7.2,
         color: '#888888',
     },
     section: {
-        marginTop: 5,
-        marginBottom: 1,
+        marginTop: 3.5,
+        marginBottom: 0.3,
     },
     sectionTitleContainer: {
         borderBottomWidth: 0.5,
         borderBottomColor: '#333333',
-        paddingBottom: 1,
-        marginBottom: 3,
+        paddingBottom: 0.3,
+        marginBottom: 2,
     },
     sectionTitle: {
-        fontSize: 8.5,
+        fontSize: 7.8,
         fontFamily: 'Helvetica-Bold',
         color: '#111111',
         textTransform: 'uppercase',
         letterSpacing: 0.5,
     },
     summaryText: {
-        fontSize: 7.5,
-        lineHeight: 1.25,
+        fontSize: 7.2,
+        lineHeight: 1.15,
         color: '#333333',
         textAlign: 'justify',
     },
     itemContainer: {
-        marginBottom: 3,
+        marginBottom: 2,
     },
     itemHeader: {
         flexDirection: 'row',
@@ -88,13 +88,13 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
     },
     itemTitle: {
-        fontSize: 8,
+        fontSize: 7.8,
         fontFamily: 'Helvetica-Bold',
         color: '#111111',
         maxWidth: '75%',
     },
     itemDate: {
-        fontSize: 7.5,
+        fontSize: 7.2,
         fontFamily: 'Helvetica',
         color: '#222222',
     },
@@ -102,38 +102,51 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'flex-start',
-        marginTop: 0.5,
+        marginTop: 0.2,
     },
     itemSubtitle: {
-        fontSize: 7.5,
+        fontSize: 7.2,
         fontFamily: 'Helvetica-Bold',
         color: '#444444',
         maxWidth: '75%',
     },
     itemLocation: {
-        fontSize: 7.5,
+        fontSize: 7.2,
         fontFamily: 'Helvetica-Oblique',
         color: '#555555',
     },
     bulletList: {
-        marginTop: 1,
+        marginTop: 0.5,
         paddingLeft: 4,
     },
     bulletRow: {
         flexDirection: 'row',
         alignItems: 'flex-start',
-        marginBottom: 1,
+        marginBottom: 0.5,
     },
     bulletPoint: {
-        width: 6,
-        fontSize: 7.5,
+        width: 5,
+        fontSize: 7,
         color: '#333333',
     },
     bulletText: {
         flex: 1,
-        fontSize: 7.5,
-        lineHeight: 1.15,
+        fontSize: 7,
+        lineHeight: 1.1,
         color: '#333333',
+    },
+    projectTitle: {
+        fontSize: 7.4,
+        fontFamily: 'Helvetica-BoldOblique',
+        color: '#222222',
+        marginTop: 0.5,
+    },
+    projectDesc: {
+        fontSize: 6.8,
+        lineHeight: 1.12,
+        color: '#333333',
+        marginTop: 0.5,
+        textAlign: 'justify',
     },
 });
 
@@ -324,28 +337,29 @@ const Experience = ({ experienceData }) => {
                 
                 if (companyLower.includes('techfidants')) {
                     customContent = (
-                        <View style={{ marginTop: 2 }}>
-                            <View style={{ marginBottom: 3 }}>
-                                <Text style={{ fontSize: 7.5, fontFamily: 'Helvetica-BoldOblique', color: '#222222', marginTop: 1 }}>
+                        <View style={{ marginTop: 1.5 }} wrap={true}>
+                            {/* Project 1: TalleFlow - Standalone */}
+                            <View style={{ marginBottom: 2 }} wrap={true}>
+                                <Text style={styles.projectTitle}>
                                     Project: TalleFlow (B2B Multi-Tenant Operations SaaS)
                                 </Text>
-                                <Text style={{ fontSize: 7, lineHeight: 1.2, color: '#333333', marginTop: 1, textAlign: 'justify' }}>
-                                    TalleFlow is a comprehensive multi-tenant B2B operations and workflow management SaaS platform designed to streamline core business processes for organizations. It consolidates multiple operations domains — projects, tasks, contacts, document storage, client portals, billing, and background automation — into a unified workspace with robust multi-tenant data isolation ensuring complete data separation between organizations.
+                                <Text style={styles.projectDesc}>
+                                    TalleFlow is an enterprise-grade multi-tenant B2B operations and workflow SaaS platform designed to centralize core business activities into a single secure interface. It manages operations across 10+ distinct domains, including projects, client task workflows, shared contacts, document repositories with digital contract signatures, billing plans, and robust background automation workers, all backed by strict multi-tenant schema isolation ensuring complete data separation between different organizations.
                                 </Text>
-                                <View style={styles.bulletList}>
-                                    <View style={styles.bulletRow}>
+                                <View style={styles.bulletList} wrap={true}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                         <Text style={styles.bulletText}>Built interactive client & vendor collaboration portals enabling real-time document review, digital e-signatures, and contract approval workflows across tenant boundaries.</Text>
                                     </View>
-                                    <View style={styles.bulletRow}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                         <Text style={styles.bulletText}>Engineered multi-tenant background job scheduler using Trigger.dev and node-cron for automated reminders, workflow sync, billing triggers, and subscription management via Stripe webhooks.</Text>
                                     </View>
-                                    <View style={styles.bulletRow}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                         <Text style={styles.bulletText}>Implemented Clerk-based authentication with webhook sync, role-based access control, and Turborepo monorepo architecture with pnpm workspaces for scalable development.</Text>
                                     </View>
-                                    <View style={styles.bulletRow}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                         <Text style={styles.bulletText}>
                                             <Text style={{ fontFamily: 'Helvetica-Bold' }}>Tech Stack: </Text>
@@ -354,56 +368,33 @@ const Experience = ({ experienceData }) => {
                                     </View>
                                 </View>
                             </View>
-                            <View style={{ marginBottom: 3 }}>
-                                <Text style={{ fontSize: 7.5, fontFamily: 'Helvetica-BoldOblique', color: '#222222', marginTop: 1 }}>
-                                    Project: Skyline & LIFTREX (Elevator Operations & Client Portal)
+
+                            {/* Project 2: Skyline + LIFTREX + Wyton - Merged */}
+                            <View style={{ marginBottom: 1 }} wrap={true}>
+                                <Text style={styles.projectTitle}>
+                                    Projects: Skyline, LIFTREX & Wyton (Elevator Lifecycle & Bidding Portals)
                                 </Text>
-                                <Text style={{ fontSize: 7, lineHeight: 1.2, color: '#333333', marginTop: 1, textAlign: 'justify' }}>
-                                    Skyline is a specialized operations platform managing the entire lifecycle of elevator installation, maintenance, proposals, and inspections for elevator service companies and building inspectors. LIFTREX is its white-label client-facing portal allowing property owners and building managers to view project status, proposals, schedules, and payment ledgers in real-time.
+                                <Text style={styles.projectDesc}>
+                                    Skyline is an elevator installation operations lifecycle platform managing traction/hydraulic elevator proposals, building compliance safety inspections, and parts procurement logistics. LIFTREX is a white-label developer client portal for real-time tracking of Gantt stages, invoices, and contractor punch lists. Wyton Developers is a white-label real estate vendor onboarding portal that handles competitive bidding management, bid leveling tables, trade verification compliance, and e-signatures.
                                 </Text>
-                                <View style={styles.bulletList}>
-                                    <View style={styles.bulletRow}>
+                                <View style={styles.bulletList} wrap={true}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>Developed dynamic proposal dashboards for creating and tracking hydraulic, traction, and MRL elevator installation proposals with automated inspection scheduling and regulatory compliance documentation.</Text>
+                                        <Text style={styles.bulletText}>Developed proposal dashboards for elevator installations with automated inspection scheduling, regulatory compliance, and real-time Gantt tracking stages.</Text>
                                     </View>
-                                    <View style={styles.bulletRow}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>Integrated Gmail API for in-platform email sync, procurement tracker for elevator parts logistics, real-time Gantt project tracking across engineering/manufacturing/installation stages, and contractor punch-list collaboration.</Text>
+                                        <Text style={styles.bulletText}>Integrated Gmail API for inbox sync, billing ledger mapping contracts with wkhtmltopdf export, S3 storage, Google OAuth 2.0, and Twilio alerts.</Text>
                                     </View>
-                                    <View style={styles.bulletRow}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>Built integrated billing ledger mapping contracts, payment schedules, and invoices with wkhtmltopdf/ExcelJS export, AWS S3 document uploads, Google OAuth 2.0, and Twilio notifications.</Text>
+                                        <Text style={styles.bulletText}>Built contractor bid leveling charts, vendor onboarding directories checking licensing/insurance trade qualifications, and PDF-lib contract e-signatures.</Text>
                                     </View>
-                                    <View style={styles.bulletRow}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                         <Text style={styles.bulletText}>
                                             <Text style={{ fontFamily: 'Helvetica-Bold' }}>Tech Stack: </Text>
-                                            React 18, Vite, TypeScript, Redux Toolkit (redux-persist), TanStack React Query, Radix UI, Tailwind CSS, Axios, Hapi.js 21, Express, Node.js, MongoDB, AWS S3, Google OAuth 2.0, Gmail API, Twilio, Nodemailer, Dropbox, Adobe PDF Services, wkhtmltopdf, ExcelJS, node-cron.
-                                        </Text>
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={{ marginBottom: 3 }}>
-                                <Text style={{ fontSize: 7.5, fontFamily: 'Helvetica-BoldOblique', color: '#222222', marginTop: 1 }}>
-                                    Project: Wyton Developers (Vendor Bidding & Contract Management)
-                                </Text>
-                                <Text style={{ fontSize: 7, lineHeight: 1.2, color: '#333333', marginTop: 1, textAlign: 'justify' }}>
-                                    Wyton Developers is a white-label vendor onboarding and construction bidding portal that helps real estate developers manage contract bids, payment terms, and vendor registrations for construction projects.
-                                </Text>
-                                <View style={styles.bulletList}>
-                                    <View style={styles.bulletRow}>
-                                        <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>Built bid leveling dashboards enabling side-by-side comparison of contractor bid costs, trade details, and timelines, with contract commitment creation and PDF-based e-signature workflows.</Text>
-                                    </View>
-                                    <View style={styles.bulletRow}>
-                                        <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>Developed vendor onboarding workflows with trade qualification verification, license/insurance checks, project action plans with milestone payouts, and payment term scheduling.</Text>
-                                    </View>
-                                    <View style={styles.bulletRow}>
-                                        <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>
-                                            <Text style={{ fontFamily: 'Helvetica-Bold' }}>Tech Stack: </Text>
-                                            React, TypeScript, Radix UI, Tailwind CSS, Axios, PDF-lib, Express, Node.js, MongoDB.
+                                            React 18, Vite, TypeScript, Redux Toolkit, TanStack React Query, Radix UI, Tailwind CSS, Axios, PDF-lib, Hapi.js 21, Express, Node.js, MongoDB, AWS S3, Google OAuth 2.0, Gmail API, Twilio, Nodemailer, wkhtmltopdf, ExcelJS, node-cron.
                                         </Text>
                                     </View>
                                 </View>
@@ -412,54 +403,30 @@ const Experience = ({ experienceData }) => {
                     );
                 } else if (companyLower.includes('sourcecube')) {
                     customContent = (
-                        <View style={{ marginTop: 2 }}>
-                            <View style={{ marginBottom: 3 }}>
-                                <Text style={{ fontSize: 7.5, fontFamily: 'Helvetica-BoldOblique', color: '#222222', marginTop: 1 }}>
-                                    Project: Unode (Web3 RPC Node Console)
-                                </Text>
-                                <Text style={{ fontSize: 7, lineHeight: 1.2, color: '#333333', marginTop: 1, textAlign: 'justify' }}>
-                                    Unode is a developer platform and node service console providing Web3 RPC endpoints, wallet integrations, and decentralized protocol utilities for the Unification network. Developers register and manage custom API keys and RPC endpoints for Ethereum/EVM and Unification protocols with integrated real-time money streaming for subscriptions via Superfluid.
-                                </Text>
-                                <View style={styles.bulletList}>
-                                    <View style={styles.bulletRow}>
-                                        <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>Built node endpoint management console with custom API key generation, RPC endpoint configuration for EVM/Unification protocols, and Chart.js-powered visual analytics for node latency, request counts, and billing metrics.</Text>
-                                    </View>
-                                    <View style={styles.bulletRow}>
-                                        <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>Developed Oracle Services dashboards for configuring Verifiable Oracle Randomness (VOR) and Oracle of Oracles (OoO) contract feeds, testnet faucet UI, and Superfluid payment stream integration for per-request billing.</Text>
-                                    </View>
-                                    <View style={styles.bulletRow}>
-                                        <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>
-                                            <Text style={{ fontFamily: 'Helvetica-Bold' }}>Tech Stack: </Text>
-                                            React, React Router, Redux, Chart.js, SCSS, Bootstrap, Web3.js, Viem, MetaMask wallet integration, Apollo GraphQL client (subgraph indexing), Superfluid Finance SDK (Streaming Widgets & Core).
-                                        </Text>
-                                    </View>
-                                </View>
-                            </View>
+                        <View style={{ marginTop: 1.5 }} wrap={true}>
+                            {/* Project 1: IFERP - Standalone (first) */}
                             {!is45Years && (
-                                <View style={{ marginBottom: 3 }}>
-                                    <Text style={{ fontSize: 7.5, fontFamily: 'Helvetica-BoldOblique', color: '#222222', marginTop: 1 }}>
+                                <View style={{ marginBottom: 2 }} wrap={true}>
+                                    <Text style={styles.projectTitle}>
                                         Project: IFERP (Academic Research & Conference Platform)
                                     </Text>
-                                    <Text style={{ fontSize: 7, lineHeight: 1.2, color: '#333333', marginTop: 1, textAlign: 'justify' }}>
-                                        IFERP is a massive scientific research community and academic conference management portal connecting students, professionals, institutions, and corporate entities. It features global research profiles, conference event booking, multi-gateway international payments, and an interactive certificate canvas editor.
+                                    <Text style={styles.projectDesc}>
+                                        IFERP is a global scientific research community and academic conference management portal connecting students, institutions, and corporate entities. The platform integrates academic research dashboards with citation metrics, publication trackers, and conference registration bookings, featuring interactive user onboarding guides and a custom-built HTML5 canvas certificate rendering engine (Fabric.js) for generating printable participant awards.
                                     </Text>
-                                    <View style={styles.bulletList}>
-                                        <View style={styles.bulletRow}>
+                                    <View style={styles.bulletList} wrap={true}>
+                                        <View style={styles.bulletRow} wrap={true}>
                                             <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                             <Text style={styles.bulletText}>Built academic research dashboard where members display profiles, track publications, journals, and citations, with advanced conference registration for scientific summits and symposiums and React Joyride onboarding walkthroughs.</Text>
                                         </View>
-                                        <View style={styles.bulletRow}>
+                                        <View style={styles.bulletRow} wrap={true}>
                                             <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                             <Text style={styles.bulletText}>Developed custom interactive certificate canvas rendering engine using Fabric.js enabling custom layouts, text fields, and print-ready PDF researcher awards with html2canvas, html2pdf.js, jspdf, and pdf-lib.</Text>
                                         </View>
-                                        <View style={styles.bulletRow}>
+                                        <View style={styles.bulletRow} wrap={true}>
                                             <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                             <Text style={styles.bulletText}>Integrated multi-gateway payment system supporting CCAvenue, PayPal, and Razorpay for international registrations, AWS S3 file storage, Firebase, Socket.io real-time sync, and PostHog analytics.</Text>
                                         </View>
-                                        <View style={styles.bulletRow}>
+                                        <View style={styles.bulletRow} wrap={true}>
                                             <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                             <Text style={styles.bulletText}>
                                                 <Text style={{ fontFamily: 'Helvetica-Bold' }}>Tech Stack: </Text>
@@ -469,52 +436,33 @@ const Experience = ({ experienceData }) => {
                                     </View>
                                 </View>
                             )}
-                            <View style={{ marginBottom: 3 }}>
-                                <Text style={{ fontSize: 7.5, fontFamily: 'Helvetica-BoldOblique', color: '#222222', marginTop: 1 }}>
-                                    Project: SANAD-HUB (Bilingual Invoice & Billing Platform)
+
+                            {/* Project 2: Unode + RealBrave + SANAD - Merged */}
+                            <View style={{ marginBottom: 1 }} wrap={true}>
+                                <Text style={styles.projectTitle}>
+                                    Projects: Unode, RealBrave & SANAD-HUB (Web3, EdTech & Financial Platforms)
                                 </Text>
-                                <Text style={{ fontSize: 7, lineHeight: 1.2, color: '#333333', marginTop: 1, textAlign: 'justify' }}>
-                                    SANAD-HUB is a bilingual (Arabic/English) invoice, quotation, and financial management SaaS platform featuring complete RTL layout capabilities. It enables users to create invoices, track quotes, log payments, manage expenses, and handle multicurrency and tax configurations.
+                                <Text style={styles.projectDesc}>
+                                    Unode is a Web3 developer RPC endpoint console for Ethereum/Unification networks featuring Superfluid money streaming subscription widgets, Oracle contract feeds, and latency analytics. RealBrave is an interactive EdTech e-learning platform integrating Zoom Video SDK classrooms, role-based dashboards, and Socket.io messaging. SANAD-HUB is a bilingual Arabic/English billing and quotation management SaaS with complete RTL layout flows, drag-and-drop template editors, and quick QR-code authentication.
                                 </Text>
-                                <View style={styles.bulletList}>
-                                    <View style={styles.bulletRow}>
+                                <View style={styles.bulletList} wrap={true}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>Built full-featured billing modules for invoicing, quotations, payment tracking, and expense management with fully localizable RTL layout natively adapting to Arabic language flows and multicurrency/tax system configurations.</Text>
+                                        <Text style={styles.bulletText}>Built Web3 node endpoint management console with custom API key generation, RPC endpoint configuration for EVM/Unification protocols, Chart.js analytics, Oracle Services dashboards (VOR/OoO feeds), and Superfluid payment stream integration.</Text>
                                     </View>
-                                    <View style={styles.bulletRow}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>Developed customizable invoice template designer using DnD Kit, react-beautiful-dnd, and react-draggable for drag-and-drop brand customization, with QR code encoding on invoice previews for quick scanning and authentication.</Text>
+                                        <Text style={styles.bulletText}>Developed Zoom-integrated virtual classrooms using Zoom Video SDK with webcam capture, skill assessments, role-specific teacher & parent portals with grading, WebSockets real-time chat via Socket.io, and ApexCharts dashboards.</Text>
                                     </View>
-                                    <View style={styles.bulletRow}>
+                                    <View style={styles.bulletRow} wrap={true}>
+                                        <Text style={styles.bulletPoint}>{'\u2022'}</Text>
+                                        <Text style={styles.bulletText}>Built bilingual invoicing modules with RTL Arabic layout, drag-and-drop invoice template designer (DnD Kit), multicurrency/tax configurations, QR code authentication, and xlsx/file-saver data export capabilities.</Text>
+                                    </View>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                         <Text style={styles.bulletText}>
                                             <Text style={{ fontFamily: 'Helvetica-Bold' }}>Tech Stack: </Text>
-                                            React, React Router, Redux Toolkit, Styled Components, Joy UI, Material UI, DnD Kit, react-beautiful-dnd, react-draggable, xlsx, file-saver, qrcode, crypto-js.
-                                        </Text>
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={{ marginBottom: 3 }}>
-                                <Text style={{ fontSize: 7.5, fontFamily: 'Helvetica-BoldOblique', color: '#222222', marginTop: 1 }}>
-                                    Project: RealBrave (EdTech e-Learning Platform)
-                                </Text>
-                                <Text style={{ fontSize: 7, lineHeight: 1.2, color: '#333333', marginTop: 1, textAlign: 'justify' }}>
-                                    RealBrave is an interactive EdTech e-learning platform connecting students, parents, and teachers with real-time class sessions, scheduling, and analytics. It features Zoom-integrated virtual classrooms, skill assessments, role-specific dashboards, and WebSockets-driven real-time messaging.
-                                </Text>
-                                <View style={styles.bulletList}>
-                                    <View style={styles.bulletRow}>
-                                        <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>Built Zoom-integrated virtual classrooms using Zoom Video SDK UI Toolkit with webcam capture via react-webcam and media recording, plus dynamic skill assessments, quizzes, and grading dashboards for evaluating student performance.</Text>
-                                    </View>
-                                    <View style={styles.bulletRow}>
-                                        <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>Developed role-specific teacher & parent portals with grading capabilities, student progress metrics, WebSockets-driven real-time chat via Socket.io, interactive ApexCharts dashboards mapping grade trends and attendance, and React Big Calendar scheduling.</Text>
-                                    </View>
-                                    <View style={styles.bulletRow}>
-                                        <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                                        <Text style={styles.bulletText}>
-                                            <Text style={{ fontFamily: 'Helvetica-Bold' }}>Tech Stack: </Text>
-                                            React, Vite, Redux Toolkit, React Router, Bootstrap, Sass, Zoom Video SDK UI Toolkit, react-media-recorder, react-webcam, Socket.io-client, Firebase, ApexCharts, React Big Calendar.
+                                            React, Vite, Redux Toolkit, Chart.js, SCSS, Bootstrap, Sass, Web3.js, Viem, MetaMask, Apollo GraphQL, Superfluid SDK, Zoom Video SDK, Socket.io-client, Firebase, ApexCharts, Joy UI, Material UI, DnD Kit, react-draggable, qrcode, xlsx.
                                         </Text>
                                     </View>
                                 </View>
@@ -523,28 +471,29 @@ const Experience = ({ experienceData }) => {
                     );
                 } else if (companyLower.includes('3elixir')) {
                     customContent = is45Years ? (
-                        <View style={{ marginTop: 2 }}>
-                            <View style={{ marginBottom: 3 }}>
-                                <Text style={{ fontSize: 7.5, fontFamily: 'Helvetica-BoldOblique', color: '#222222', marginTop: 1 }}>
+                        <View style={{ marginTop: 1.5 }} wrap={true}>
+                            {/* Project: IFERP - Rendered under 3Elixir for 4.5 Years experience */}
+                            <View style={{ marginBottom: 1 }} wrap={true}>
+                                <Text style={styles.projectTitle}>
                                     Project: IFERP (Academic Research & Conference Platform)
                                 </Text>
-                                <Text style={{ fontSize: 7, lineHeight: 1.2, color: '#333333', marginTop: 1, textAlign: 'justify' }}>
-                                    IFERP is a massive scientific research community and academic conference management portal connecting students, professionals, institutions, and corporate entities. It features global research profiles, conference event booking, multi-gateway international payments, and an interactive certificate canvas editor.
+                                <Text style={styles.projectDesc}>
+                                    IFERP is a global scientific research community and academic conference management portal connecting students, institutions, and corporate entities. The platform integrates academic research dashboards with citation metrics, publication trackers, and conference registration bookings, featuring interactive user onboarding guides and a custom-built HTML5 canvas certificate rendering engine (Fabric.js) for generating printable participant awards.
                                 </Text>
-                                <View style={styles.bulletList}>
-                                    <View style={styles.bulletRow}>
+                                <View style={styles.bulletList} wrap={true}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                         <Text style={styles.bulletText}>Built academic research dashboard where members display profiles, track publications, journals, and citations, with advanced conference registration for scientific summits and symposiums and React Joyride onboarding walkthroughs.</Text>
                                     </View>
-                                    <View style={styles.bulletRow}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                         <Text style={styles.bulletText}>Developed custom interactive certificate canvas rendering engine using Fabric.js enabling custom layouts, text fields, and print-ready PDF researcher awards with html2canvas, html2pdf.js, jspdf, and pdf-lib.</Text>
                                     </View>
-                                    <View style={styles.bulletRow}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                         <Text style={styles.bulletText}>Integrated multi-gateway payment system supporting CCAvenue, PayPal, and Razorpay for international registrations, AWS S3 file storage, Firebase, Socket.io real-time sync, and PostHog analytics.</Text>
                                     </View>
-                                    <View style={styles.bulletRow}>
+                                    <View style={styles.bulletRow} wrap={true}>
                                         <Text style={styles.bulletPoint}>{'\u2022'}</Text>
                                         <Text style={styles.bulletText}>
                                             <Text style={{ fontFamily: 'Helvetica-Bold' }}>Tech Stack: </Text>
@@ -556,8 +505,8 @@ const Experience = ({ experienceData }) => {
                         </View>
                     ) : (
                         <View>
-                            <Text style={{ fontSize: 7, lineHeight: 1.2, color: '#333333', marginTop: 1, textAlign: 'justify' }}>
-                                A 2-month intensive software developer trainee internship focused on React.js web development fundamentals, responsive user interfaces, and collaborative Git practices.
+                            <Text style={styles.projectDesc}>
+                                An intensive frontend developer trainee program centered on React.js web development fundamentals, component styling patterns, responsive user interface grids, state management, rest API consumption, and team-based Git collaboration workflows.
                             </Text>
                             <View style={styles.bulletList}>
                                 <View style={styles.bulletRow}>
@@ -647,7 +596,9 @@ const Education = ({ data }) => {
                     </View>
                     {note?.trim() && (
                         <Text style={[styles.summaryText, { fontFamily: 'Helvetica-Oblique', marginTop: 1, color: '#555555' }]}>
-                            {note.trim()}
+                            {note.trim().includes('Chemical Engineering') 
+                                ? 'Career pivot: transitioned into software development via self-study; 2.5+ years building MERN apps.' 
+                                : note.trim()}
                         </Text>
                     )}
                 </View>
@@ -656,7 +607,7 @@ const Education = ({ data }) => {
     );
 };
 
-const Format2Resume = ({ data }) => {
+const Format3Resume = ({ data }) => {
     const { contact, education, experience, summary, skills, tools } = data;
 
     return (
@@ -687,4 +638,4 @@ const Format2Resume = ({ data }) => {
     );
 };
 
-export default Format2Resume;
+export default Format3Resume;

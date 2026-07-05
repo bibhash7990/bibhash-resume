@@ -1,7 +1,16 @@
+import dynamic from 'next/dynamic';
 import Editor from '@/components/Editor';
-import Preview from '@/components/Resume/Preview';
 import ResumeSwitcher from '@/components/ResumeSwitcher';
 import Tabs from '@/components/Tabs';
+
+const Preview = dynamic(() => import('@/components/Resume/Preview'), {
+    ssr: false,
+    loading: () => (
+        <div className="relative flex min-h-96 w-full animate-pulse items-center justify-center rounded-lg bg-gray-700/40 md:max-w-[24rem] 2xl:max-w-[28rem]">
+            <div className="text-center text-sm text-gray-400">Loading preview…</div>
+        </div>
+    ),
+});
 
 const page = ({ searchParams: { tab = 'contact' } }) => {
     return (
