@@ -13,6 +13,13 @@ import { usePDF } from '@react-pdf/renderer';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { FaDownload, FaEye } from 'react-icons/fa6';
 
+const TEMPLATE_OPTIONS = [
+    { id: 'format1', label: 'Format 1 (Classic)' },
+    { id: 'format2', label: 'Format 2 (One-page)' },
+    { id: 'format3', label: 'Format 3 (Merged)' },
+    { id: 'format4', label: 'Format 4 (Full Stack)' },
+];
+
 const Loader = () => (
     <div className="flex min-h-96 w-full items-center justify-center">
         <CgSpinner className="mx-auto mt-16 animate-spin text-center text-4xl text-primary-400 md:text-5xl" />
@@ -67,40 +74,21 @@ function ResumePdfViewer() {
             {/* Template Switcher */}
             <div className="mb-4 flex flex-col gap-2 rounded-lg border border-gray-700 bg-gray-800/80 p-3 shadow-md backdrop-blur-sm">
                 <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">Layout Format</span>
-                <div className="flex gap-2">
-                    <button
-                        type="button"
-                        onClick={() => handleTemplateChange('format1')}
-                        className={`flex-1 rounded-md py-1.5 text-xs font-medium transition-all duration-200 ${
-                            template === 'format1'
-                                ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/25 ring-1 ring-primary-400'
-                                : 'bg-gray-700/50 text-gray-300 hover:bg-gray-700 hover:text-white'
-                        }`}
-                    >
-                        Format 1 (Classic)
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => handleTemplateChange('format2')}
-                        className={`flex-1 rounded-md py-1.5 text-xs font-medium transition-all duration-200 ${
-                            template === 'format2'
-                                ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/25 ring-1 ring-primary-400'
-                                : 'bg-gray-700/50 text-gray-300 hover:bg-gray-700 hover:text-white'
-                        }`}
-                    >
-                        Format 2 (One-page)
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => handleTemplateChange('format3')}
-                        className={`flex-1 rounded-md py-1.5 text-xs font-medium transition-all duration-200 ${
-                            template === 'format3'
-                                ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/25 ring-1 ring-primary-400'
-                                : 'bg-gray-700/50 text-gray-300 hover:bg-gray-700 hover:text-white'
-                        }`}
-                    >
-                        Format 3 (Merged)
-                    </button>
+                <div className="grid grid-cols-2 gap-2">
+                    {TEMPLATE_OPTIONS.map(({ id, label }) => (
+                        <button
+                            key={id}
+                            type="button"
+                            onClick={() => handleTemplateChange(id)}
+                            className={`rounded-md py-1.5 text-xs font-medium transition-all duration-200 ${
+                                template === id
+                                    ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/25 ring-1 ring-primary-400'
+                                    : 'bg-gray-700/50 text-gray-300 hover:bg-gray-700 hover:text-white'
+                            }`}
+                        >
+                            {label}
+                        </button>
+                    ))}
                 </div>
             </div>
 

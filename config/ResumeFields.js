@@ -7,7 +7,9 @@ export default {
             { name: 'title', label: 'Your Job Title', placeholder: 'Software Developer' },
             { name: 'email', label: 'Email', type: 'email', placeholder: 'john.doe@example.com' },
             { name: 'phone', label: 'Phone', type: 'tel', placeholder: '+1234567890' },
-            // { name: 'address', label: 'Address', placeholder: '123 Street, City, Country' },
+            // Location is intentionally off. Some ATS filter candidates by city, so
+            // uncommenting this line re-enables it in every PDF format.
+            // { name: 'location', label: 'Location', placeholder: 'City, State, Country' },
             { name: 'linkedin', label: 'Linked', placeholder: 'linkedin.com/in/johndoe' },
             { name: 'github', label: 'Github', placeholder: 'github.com/johndoe' },
             { name: 'blogs', label: 'Blogs', placeholder: 'github.com/johndoe' },

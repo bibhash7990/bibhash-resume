@@ -3,6 +3,9 @@ import Editor from '@/components/Editor';
 import ResumeSwitcher from '@/components/ResumeSwitcher';
 import Tabs from '@/components/Tabs';
 
+// Pulls in @react-pdf/renderer and pdfjs, so keep it off the server render path.
+const AtsChecker = dynamic(() => import('@/components/AtsChecker'), { ssr: false });
+
 const Preview = dynamic(() => import('@/components/Resume/Preview'), {
     ssr: false,
     loading: () => (
@@ -20,6 +23,7 @@ const page = ({ searchParams: { tab = 'contact' } }) => {
                 <div className="mb-4">
                     <ResumeSwitcher />
                 </div>
+                <AtsChecker />
                 <Tabs activeTab={tab} />
                 <Editor tab={tab} />
             </div>

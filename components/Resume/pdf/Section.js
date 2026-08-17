@@ -5,23 +5,22 @@ const Section = ({ title, style, children }) => {
         section_title: {
             textTransform: 'uppercase',
             color: '#333',
-            fontSize: 13,
+            fontSize: 11.5,
         },
 
         section_title_underline: {
             height: 1,
-            margin: '2px 0px 4px 0px',
+            margin: '2px 0px 3px 0px',
             backgroundColor: '#888',
-        },
-        section_end: {
-            height: 2,
-            margin: '10px 0px',
-            backgroundColor: '#eee',
         },
     });
 
+    // No trailing spacer or border here on purpose: as its own box at the end
+    // of the last section it could not fit in the space left at the foot of a
+    // page and got pushed onto a new one, producing a blank page. The caller
+    // draws separators *between* sections instead.
     return (
-        <View>
+        <View style={style}>
             {title && (
                 <>
                     <Text style={styles.section_title}>{title}</Text>
@@ -30,8 +29,6 @@ const Section = ({ title, style, children }) => {
             )}
 
             {children}
-
-            <View style={styles.section_end}></View>
         </View>
     );
 };

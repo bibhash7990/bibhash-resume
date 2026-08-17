@@ -4,7 +4,8 @@ const styles = StyleSheet.create({
     page: {
         backgroundColor: '#ffffff',
         color: '#555',
-        padding: 30,
+        paddingVertical: 18,
+        paddingHorizontal: 22,
         fontFamily: 'Times-Roman',
     },
 
@@ -14,34 +15,35 @@ const styles = StyleSheet.create({
 
     header__name: {
         color: '#111',
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: 'Times-Bold',
         textAlign: 'center',
     },
     sub__header__name: {
         color: '#111',
-        fontSize: 14,
+        fontSize: 12.5,
         fontFamily: 'Times-Bold',
         textAlign: 'center',
     },
     header__links: {
         color: '#555',
-        fontSize: 11,
+        fontSize: 10,
         display: 'flex',
         flexDirection: 'row',
+        flexWrap: 'wrap',
         justifyContent: 'center',
-        gap: 14,
-        marginTop: 6,
-        marginBottom: 4,
+        gap: 10,
+        marginTop: 4,
+        marginBottom: 3,
     },
 
     education_note: {
-        fontSize: 9,
+        fontSize: 8.5,
         color: '#666',
         fontFamily: 'Times-Italic',
-        marginTop: 4,
-        marginBottom: 2,
-        lineHeight: 1.35,
+        marginTop: 3,
+        marginBottom: 1,
+        lineHeight: 1.3,
     },
 
     title_wrapper: {
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        fontSize: 12,
+        fontSize: 10.5,
     },
 
     subTitle_wrapper: {
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        fontSize: 11,
+        fontSize: 9.8,
     },
 
     title: {
@@ -67,16 +69,23 @@ const styles = StyleSheet.create({
     },
     date: {
         fontFamily: 'Times-Italic',
-        fontSize: 10,
+        fontSize: 9.5,
     },
 
     line: {
         borderBottom: '1px solid #eee',
-        margin: '5px 0px',
+        margin: '2px 0px',
     },
     lists: {
-        fontSize: 10.2,
-        marginTop: 2,
+        fontSize: 9.2,
+        marginTop: 1,
+    },
+    /** Separator applied between sections only — never after the last one. */
+    section_gap: {
+        paddingBottom: 3,
+        marginBottom: 3,
+        borderBottomWidth: 2,
+        borderBottomColor: '#eee',
     },
     link: {
         color: '#666',

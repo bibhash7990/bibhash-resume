@@ -59,6 +59,16 @@ const Editor = ({ tab }) => {
 
     return (
         <>
+            {template === 'format4' && (
+                <div className="mb-4 rounded-lg border border-sky-800 bg-sky-950/40 p-3.5 text-sm text-sky-200 shadow-md">
+                    <span className="font-semibold">Format 4 (Full Stack) is active:</span> the Technical Skills block
+                    is rendered from a built-in full-stack matrix (Languages, Frontend, Mobile, Backend &amp; APIs,
+                    Databases, Cloud &amp; DevOps, Testing, Tools) that already includes SQL, MySQL, PostgreSQL,
+                    AngularJS, Next.js and React Native. Whatever you type in the Skills and Tools tabs is merged into
+                    those categories and deduplicated. Experience, Projects, Education, Certificates and Languages all
+                    render from your own data — nothing is hidden in this layout.
+                </div>
+            )}
             {(template === 'format2' || template === 'format3') && (
                 <div className="mb-4 rounded-lg border border-teal-800 bg-teal-950/40 p-3.5 text-sm text-teal-200 shadow-md">
                     <span className="font-semibold">{template === 'format2' ? 'Format 2' : 'Format 3'} ({template === 'format2' ? 'One-page layout' : 'One-page merged layout'}) is active:</span> Technical Skills and Software Tools are combined in the PDF. Projects are automatically nested under their respective companies (Techfidants or Sourcecube) in the Professional Experience section. Certificates and Languages are hidden in this layout.

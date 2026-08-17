@@ -2,17 +2,7 @@
 
 import { Page, Text, View, Document, Link, StyleSheet } from '@react-pdf/renderer';
 import formatDate from '@/utils/formatDate';
-
-const isPlaceholderSocial = v =>
-    !v?.trim() ||
-    /johndoe|example\.com|placeholder/i.test(v);
-
-const toHttpUrl = raw => {
-    const t = raw.trim();
-    if (!t) return '';
-    if (/^https?:\/\//i.test(t)) return t;
-    return `https://${t.replace(/^\/+/, '')}`;
-};
+import buildContactLinks from './contactLinks';
 
 const styles = StyleSheet.create({
     page: {
@@ -138,60 +128,7 @@ const styles = StyleSheet.create({
 });
 
 const Header = ({ data }) => {
-    const contactLinks = [];
-
-    if (data.phone?.trim()) {
-        const raw = data.phone.trim();
-        const digits = raw.replace(/\D/g, '');
-        const display = raw.startsWith('+') ? raw : digits.length === 10 ? `+91 ${digits}` : raw;
-        const href = digits.length === 10 ? `tel:+91${digits}` : digits.length > 0 ? `tel:+${digits}` : `tel:${raw}`;
-        contactLinks.push({ key: 'phone', label: display, href });
-    }
-
-    if (data.email?.trim()) {
-        const e = data.email.trim();
-        contactLinks.push({ key: 'email', label: e, href: `mailto:${e}` });
-    }
-
-    if (data.linkedin?.trim() && !isPlaceholderSocial(data.linkedin)) {
-        contactLinks.push({
-            key: 'linkedin',
-            label: 'LinkedIn',
-            href: toHttpUrl(data.linkedin),
-        });
-    }
-
-    if (data.github?.trim() && !isPlaceholderSocial(data.github)) {
-        contactLinks.push({
-            key: 'github',
-            label: 'GitHub',
-            href: toHttpUrl(data.github),
-        });
-    }
-
-    if (data.blogs?.trim() && !isPlaceholderSocial(data.blogs)) {
-        contactLinks.push({
-            key: 'blogs',
-            label: 'Blogs',
-            href: toHttpUrl(data.blogs),
-        });
-    }
-
-    if (data.twitter?.trim() && !isPlaceholderSocial(data.twitter)) {
-        contactLinks.push({
-            key: 'twitter',
-            label: 'Twitter',
-            href: toHttpUrl(data.twitter),
-        });
-    }
-
-    if (data.portfolio?.trim() && !isPlaceholderSocial(data.portfolio)) {
-        contactLinks.push({
-            key: 'portfolio',
-            label: 'Portfolio',
-            href: toHttpUrl(data.portfolio),
-        });
-    }
+    const contactLinks = buildContactLinks(data);
 
     return (
         <View style={styles.header}>
@@ -200,9 +137,13 @@ const Header = ({ data }) => {
             <View style={styles.contactBar}>
                 {contactLinks.map(({ key, label, href }, idx) => (
                     <View key={key} style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <Link src={href} style={styles.contactLink}>
-                            {label}
-                        </Link>
+                        {href ? (
+                            <Link src={href} style={styles.contactLink}>
+                                {label}
+                            </Link>
+                        ) : (
+                            <Text style={styles.contactLink}>{label}</Text>
+                        )}
                         {idx < contactLinks.length - 1 && (
                             <Text style={styles.contactSeparator}>  |  </Text>
                         )}

@@ -5,74 +5,11 @@ import Section from './Section';
 import ListItem from './ListItem';
 import styles from '../Styles';
 import formatDate from '@/utils/formatDate';
-
-const isPlaceholderSocial = v =>
-    !v?.trim() ||
-    /johndoe|example\.com|placeholder/i.test(v);
-
-const toHttpUrl = raw => {
-    const t = raw.trim();
-    if (!t) return '';
-    if (/^https?:\/\//i.test(t)) return t;
-    return `https://${t.replace(/^\/+/, '')}`;
-};
+import buildContactLinks from './contactLinks';
+import filterEducation from './filterEducation';
 
 const Header = ({ data }) => {
-    const contactLinks = [];
-
-    if (data.phone?.trim()) {
-        const raw = data.phone.trim();
-        const digits = raw.replace(/\D/g, '');
-        const display = raw.startsWith('+') ? raw : digits.length === 10 ? `+91 ${digits}` : raw;
-        const href =
-            digits.length === 10 ? `tel:+91${digits}` : digits.length > 0 ? `tel:+${digits}` : `tel:${raw}`;
-        contactLinks.push({ key: 'phone', label: display, href });
-    }
-
-    if (data.email?.trim()) {
-        const e = data.email.trim();
-        contactLinks.push({ key: 'email', label: e, href: `mailto:${e}` });
-    }
-
-    if (data.linkedin?.trim() && !isPlaceholderSocial(data.linkedin)) {
-        contactLinks.push({
-            key: 'linkedin',
-            label: 'LinkedIn',
-            href: toHttpUrl(data.linkedin),
-        });
-    }
-
-    if (data.github?.trim() && !isPlaceholderSocial(data.github)) {
-        contactLinks.push({
-            key: 'github',
-            label: 'GitHub',
-            href: toHttpUrl(data.github),
-        });
-    }
-
-    if (data.blogs?.trim() && !isPlaceholderSocial(data.blogs)) {
-        contactLinks.push({
-            key: 'blogs',
-            label: 'Blogs',
-            href: toHttpUrl(data.blogs),
-        });
-    }
-
-    if (data.twitter?.trim() && !isPlaceholderSocial(data.twitter)) {
-        contactLinks.push({
-            key: 'twitter',
-            label: 'Twitter',
-            href: toHttpUrl(data.twitter),
-        });
-    }
-
-    if (data.portfolio?.trim() && !isPlaceholderSocial(data.portfolio)) {
-        contactLinks.push({
-            key: 'portfolio',
-            label: 'Portfolio',
-            href: toHttpUrl(data.portfolio),
-        });
-    }
+    const contactLinks = buildContactLinks(data);
 
     return (
         <Section>
@@ -81,17 +18,24 @@ const Header = ({ data }) => {
                 <Text style={styles.sub__header__name}>({data.title})</Text>
             :   null}
             <View style={styles.header__links}>
-                {contactLinks.map(({ key, label, href }) => (
-                    <Link key={key} src={href} style={styles.link}>
-                        {label}
-                    </Link>
-                ))}
+                {contactLinks.map(({ key, label, href }) =>
+                    href ?
+                        <Link key={key} src={href} style={styles.link}>
+                            {label}
+                        </Link>
+                    :   <Text key={key} style={styles.link}>
+                            {label}
+                        </Text>,
+                )}
             </View>
         </Section>
     );
 };
 
-const Education = ({ data }) => (
+const Education = ({ data: rawData }) => {
+    const data = filterEducation(rawData);
+
+    return (
     <Section title={'Education'}>
         {data.map(({ degree, institution, start, end, location, gpa, note }, i) => (
             <View key={i} style={styles?.wrappper}>
@@ -119,7 +63,8 @@ const Education = ({ data }) => (
             </View>
         ))}
     </Section>
-);
+    );
+};
 
 const Projects = ({ data }) => (
     <Section title={'Projects'}>
@@ -235,47 +180,52 @@ const Certificaes = ({ data }) => (
     </Section>
 );
 
+/**
+ * Rendered as one flowing line rather than side-by-side columns: columns make
+ * a PDF text extractor jump back up the page, which scrambles reading order
+ * for ATS parsers.
+ */
 const Languages = ({ data }) => (
     <Section title={'Languages'}>
-        <View
-            style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-            }}
-        >
-            {data.map(({ language, proficiency }, i) => (
-                <View key={i}>
-                    <Text style={{ fontSize: 12 }}>{language}</Text>
-                    <Text style={{ fontSize: 10, color: '#777' }}>{proficiency}</Text>
-                </View>
-            ))}
-        </View>
+        <Text style={{ fontSize: 10.5, lineHeight: 1.3 }}>
+            {data
+                .map(({ language, proficiency }) => (proficiency ? `${language} (${proficiency})` : language))
+                .join('  •  ')}
+        </Text>
     </Section>
 );
 
 const Format1Resume = ({ data }) => {
     const { contact, education, experience, projects, summary, skills, certificates, languages, tools } = data;
 
+    // Built as a list so the separator can be drawn between sections only.
+    // A trailing separator after the final section overflows the page and
+    // produces a blank extra page.
+    const sections = [
+        summary?.summary ?
+            <Section title={'Summary'}>
+                <Text style={{ fontSize: 10 }}>{summary.summary}</Text>
+            </Section>
+        :   null,
+        education?.length > 0 ? <Education data={education} /> : null,
+        experience?.length > 0 ? <Experience data={experience} /> : null,
+        projects?.length > 0 ? <Projects data={projects} /> : null,
+        skills?.skills?.length > 0 ? <Skills data={skills.skills} /> : null,
+        tools?.tools?.length > 0 ? <Tools data={tools.tools} /> : null,
+        certificates?.length > 0 ? <Certificaes data={certificates} /> : null,
+        languages?.length > 0 ? <Languages data={languages} /> : null,
+    ].filter(Boolean);
+
     return (
         <Document language="en">
             <Page size="A4" style={styles.page}>
                 <Header data={contact} />
 
-                {summary?.summary && (
-                    <Section title={'Summary'}>
-                        <Text style={{ fontSize: 10 }}>{summary?.summary}</Text>
-                    </Section>
-                )}
-
-                {education.length > 0 && <Education data={education} />}
-                {experience.length > 0 && <Experience data={experience} />}
-                {projects.length > 0 && <Projects data={projects} />}
-
-                {skills?.skills?.length > 0 && <Skills data={skills.skills} />}
-                {tools?.tools?.length > 0 && <Tools data={tools.tools} />}
-                {certificates?.length > 0 && <Certificaes data={certificates} />}
-                {languages?.length > 0 && <Languages data={languages} />}
+                {sections.map((section, i) => (
+                    <View key={i} style={i < sections.length - 1 ? styles.section_gap : undefined}>
+                        {section}
+                    </View>
+                ))}
             </Page>
         </Document>
     );

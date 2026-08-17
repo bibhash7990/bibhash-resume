@@ -3,9 +3,14 @@
 import Format1Resume from './Format1';
 import Format2Resume from './Format2';
 import Format3Resume from './Format3';
+import Format4Resume from './Format4';
 
 const Resume = ({ data }) => {
     const template = data?.meta?.template || 'format1';
+
+    if (template === 'format4') {
+        return <Format4Resume data={data} />;
+    }
 
     if (template === 'format3') {
         return <Format3Resume data={data} />;
