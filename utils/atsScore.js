@@ -16,12 +16,44 @@ export const SECTION_SYNONYMS = {
     skills: [/technical\s+skills/i, /^skills/im, /core\s+competenc/i],
 };
 
-/** Signals a recruiter search or ATS keyword filter is likely to look for. */
-export const KEYWORDS = [
-    'javascript', 'typescript', 'react', 'next.js', 'angular', 'react native',
-    'node', 'express', 'rest', 'api', 'sql', 'mysql', 'postgresql', 'mongodb',
-    'aws', 'docker', 'git', 'agile', 'ci/cd', 'testing',
-];
+/**
+ * Signals a recruiter search or ATS keyword filter is likely to look for.
+ *
+ * Keyed by domain: scoring a chemical/pharma production resume against a
+ * software stack list reports a near-zero keyword score for a resume that is
+ * in fact well targeted, so the set is chosen from the resume text itself.
+ */
+export const KEYWORD_SETS = {
+    software: [
+        'javascript', 'typescript', 'react', 'next.js', 'angular', 'react native',
+        'node', 'express', 'rest', 'api', 'sql', 'mysql', 'postgresql', 'mongodb',
+        'aws', 'docker', 'git', 'agile', 'ci/cd', 'testing',
+    ],
+    chemical: [
+        'gmp', 'sop', 'batch', 'deviation', 'capa', 'change control', 'qms',
+        'audit', 'reactor', 'centrifuge', 'dryer', 'filtration', 'distillation',
+        'solvent', 'yield', 'in-process', 'calibration', 'safety', 'shift',
+        'production', 'api', 'quality',
+    ],
+};
+
+/** Back-compat default export of the software set. */
+export const KEYWORDS = KEYWORD_SETS.software;
+
+/** Markers used only to decide which keyword set to score against. */
+const DOMAIN_MARKERS = {
+    software: [/\breact\b/i, /\bnode\.?js\b/i, /\bjavascript\b/i, /\btypescript\b/i, /\bfront-?end\b/i, /\bsoftware developer\b/i],
+    chemical: [/\bcgmp\b/i, /\bgmp\b/i, /\breactor\b/i, /\bchemical engineer/i, /\bpharmaceutical\b/i, /\bbmr\b/i, /\bproduction officer\b/i],
+};
+
+/**
+ * Picks the keyword set whose domain markers appear most often. Ties and
+ * no-signal resumes fall back to the software set, matching prior behaviour.
+ */
+export const detectDomain = text => {
+    const count = key => DOMAIN_MARKERS[key].filter(re => re.test(text)).length;
+    return count('chemical') > count('software') ? 'chemical' : 'software';
+};
 
 const MONTHS =
     '(january|february|march|april|may|june|july|august|september|october|november|december)';
@@ -127,10 +159,12 @@ export default function scoreResume({ numPages, pages, text, annotationUrls = []
 
     /* ---------- Keywords & hygiene ---------- */
     let keywords = 0;
-    const hits = KEYWORDS.filter(k => lower.includes(k));
-    keywords += Math.round((hits.length / KEYWORDS.length) * 10);
-    if (hits.length < KEYWORDS.length * 0.7) {
-        add('medium', 'keywords', `Only ${hits.length}/${KEYWORDS.length} common stack keywords present. Missing: ${KEYWORDS.filter(k => !hits.includes(k)).join(', ')}`);
+    const domain = detectDomain(text);
+    const keywordList = KEYWORD_SETS[domain];
+    const hits = keywordList.filter(k => lower.includes(k));
+    keywords += Math.round((hits.length / keywordList.length) * 10);
+    if (hits.length < keywordList.length * 0.7) {
+        add('medium', 'keywords', `Only ${hits.length}/${keywordList.length} common ${domain} keywords present. Missing: ${keywordList.filter(k => !hits.includes(k)).join(', ')}`);
     }
 
     const badGlyphs = [...new Set(text.match(/[^\x00-\x7F•–—’‘“”]/g) || [])];

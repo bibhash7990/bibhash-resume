@@ -500,12 +500,197 @@ const profile25Talleflow = {
 };
 
 /* ------------------------------------------------------------------ */
+/*  1c. Profile — Overall experience (chemical / pharma re-entry)      */
+/*      Whole career in one resume: API production (2020-2022) then    */
+/*      software (2023-2026). Written for API / bulk drug / specialty  */
+/*      chemical roles, so pharma keywords lead and the software roles */
+/*      stay short. Strict reverse-chronological order for ATS date    */
+/*      parsing; every employer kept so the timeline matches PF/UAN.   */
+/* ------------------------------------------------------------------ */
+
+const profileOverall = {
+    meta: { name: 'Overall Experience', template: 'format1', allowedTemplates: ['format1'] },
+    contact: {
+        name: 'Bibhash Lenka',
+        email: 'bibhash88lenka@gmail.com',
+        phone: '7990721091',
+        title: 'Chemical Engineer | Production Officer - API & Bulk Drug Manufacturing',
+        linkedin: 'https://www.linkedin.com/in/bibhash-dev/',
+        github: '',
+        blogs: '',
+        twitter: '',
+        portfolio: '',
+    },
+    summary: {
+        summary:
+            'Chemical Engineer (BE, 9.18 CGPA) with 2 years of hands-on API and bulk drug production experience at Sun Pharmaceutical Industries Ltd. and Praveen Laboratories Pvt. Ltd., covering shift operations, BMR/BPR review, in-process monitoring, deviation and CAPA handling, and USFDA / EU-GMP audit readiness. Independently operated and supervised stainless steel and glass-lined reactors, ANFD, centrifuges, sparkler and Nutsche filters, vacuum tray dryer, Nauta dryer and wiped film evaporators in a cGMP environment with a sustained zero-accident record. Subsequently spent 2.5 years in software engineering building production documentation, reporting and workflow-automation systems, and is now returning to core chemical and pharmaceutical manufacturing with added strength in process data analysis, digital documentation and system validation concepts (CSV / GAMP 5, ALCOA+, 21 CFR Part 11). Based in Surat, Gujarat, India and open to relocation across Indian pharma and chemical manufacturing clusters. Seeking Production Officer / Executive, Process Engineer or Manufacturing Engineer roles in API, bulk drug, intermediate or specialty chemical plants.',
+    },
+    education: [
+        {
+            degree: 'Bachelor of Engineering in Chemical Engineering',
+            institution: 'Prime Institute of Engineering and Technology (Gujarat Technological University)',
+            start: '2016-06',
+            end: '2020-08',
+            location: 'Navsari, Gujarat',
+            gpa: '9.18/10',
+            note: 'Core discipline: chemical engineering. Worked 2 years in API / bulk drug production (2020-2022), then 2.5 years in software engineering (2023-2026); now returning to chemical and pharmaceutical manufacturing with added data, documentation and digital-systems capability.',
+        },
+        {
+            degree: 'Higher Secondary Certificate (Science) - 78%',
+            institution: 'Gyan Jyot Vidyalaya (G.S.E.B.)',
+            start: '2014-06',
+            end: '2016-08',
+            location: 'Surat, Gujarat',
+        },
+        {
+            degree: 'Secondary School Certificate - 75%',
+            institution: 'Adarsh Hindi Vidyalaya (G.S.E.B.)',
+            start: '2013-06',
+            end: '2014-06',
+            location: 'Surat, Gujarat',
+        },
+    ],
+    experience: [
+        {
+            role: 'Software Developer (Full-Stack)',
+            company: 'Techfidants',
+            location: 'Surat, Gujarat',
+            start: '2025-07',
+            end: '2026-05',
+            description:
+                'Built and maintained web-based operations platforms covering project tracking, controlled document management, approval and e-signature flows and automated reporting - the digital equivalent of shop-floor documentation and workflow control.\nImplemented audit trails, role-based access and validation logic aligned with electronic record principles (21 CFR Part 11 / ALCOA+), plus scheduled jobs for reminders, data sync and report generation.\nDelivered every release under documented requirements, peer review, versioned change control and formal QA sign-off.',
+        },
+        {
+            role: 'Junior Software Developer',
+            company: 'Sourcecube Technology Pvt. Ltd.',
+            location: 'Surat, Gujarat',
+            start: '2023-11',
+            end: '2025-06',
+            description:
+                'Developed data-heavy dashboards, reporting modules and invoice / billing systems across four production applications, building SQL and data-analysis capability directly applicable to production MIS, yield tracking and trend reporting.\nWorked in two-week planning cycles with written requirements, peer review and release approval - a controlled-change discipline transferable to change control and SOP revision.',
+        },
+        {
+            role: 'Junior Software Developer Trainee',
+            company: '3Elixir Software Solution',
+            location: 'Surat, Gujarat',
+            start: '2023-09',
+            end: '2023-10',
+            description:
+                'Completed a structured two-month software development training programme following the transition out of the pharmaceutical sector.',
+        },
+        {
+            role: 'Career Transition - Full-Time Technical Upskilling',
+            company: 'Self-Directed Study',
+            location: 'Surat, Gujarat',
+            start: '2023-01',
+            end: '2023-08',
+            description:
+                'Studied full time to build software and data skills alongside the chemical engineering base - programming fundamentals, databases and SQL, and web application development.\nBuilt practice projects end to end to consolidate the learning before entering a professional software role.',
+        },
+        {
+            role: 'Production Officer - API / Bulk Drug Manufacturing',
+            company: 'Sun Pharmaceutical Industries Ltd.',
+            location: 'Panoli, Ankleshwar, Gujarat',
+            start: '2022-05',
+            end: '2022-12',
+            description:
+                'Led shift production operations in an API / bulk drug block, planning and executing batch schedules across reaction, filtration and drying trains to consistently meet monthly production targets.\nReviewed Batch Manufacturing Records (BMR / BPR) and equipment cleaning, area cleaning and differential-pressure logbooks, ensuring every entry was complete, contemporaneous and signed as per cGMP and ALCOA+ data integrity requirements.\nCarried out online process monitoring and filling - reaction temperature, pressure, pH, vacuum, nitrogen blanketing and reflux control - and coordinated in-process sampling with QC to hold batches within defined process parameters.\nOperated and supervised stainless steel and glass-lined reactors, agitated nutsche filter dryer (ANFD), stainless steel centrifuge, sparkler filter, Nutsche filter, vacuum tray dryer, Nauta dryer, wiped film evaporator and dry vacuum systems.\nReported deviations, incidents and abnormalities to QA within the shift and supported root cause investigation, CAPA closure and the associated change control documentation.\nPerformed daily verification and calibration checks of weighing balances and process instruments in the production area, and ensured line clearance and area clearance before every batch charging.\nPrepared the block for internal, customer and regulatory audits (USFDA / EU-GMP readiness) - compiled documentation, faced audit queries and closed observations within committed timelines.\nCoordinated daily with QA, QC, Engineering, Stores and EHS to confirm utility and raw material availability before charging, keeping shop-floor execution uninterrupted.\nSupervised shift operators and contract manpower and enforced PPE compliance, work permit and lock-out systems and safe handling of hazardous solvents and chemicals - sustained a zero reportable-accident record.\nDrove 5S and housekeeping standards and coordinated preventive maintenance and breakdown response with Engineering to minimise equipment downtime.',
+        },
+        {
+            role: 'Trainee Chemist - Production',
+            company: 'Praveen Laboratories Pvt. Ltd.',
+            location: 'Jolva, Kadodara, Gujarat',
+            start: '2020-11',
+            end: '2022-05',
+            description:
+                'Executed batch manufacturing operations in the API production block - raw material and solvent charging, reaction, work-up, layer separation, filtration, centrifugation and drying - strictly as per approved BMR and SOPs.\nMonitored critical process parameters in real time, recorded in-process data in batch records and escalated any deviation from set limits to the shift in-charge immediately.\nHandled distillation and solvent recovery operations and vacuum drying cycles with continuous attention to batch yield and cycle-time improvement.\nMaintained equipment cleaning, area cleaning, environmental pressure differential and instrument logbooks to GMP documentation standards.\nApplied plant safety practices daily - MSDS and chemical hazard awareness, PPE, work permit system, spill control and safe handling of flammable and corrosive materials.\nSupported audit preparation, SOP revision and on-floor training of newly joined operators.',
+        },
+    ],
+    projects: [
+        {
+            title: 'Design and Simulation of Multifluid Heat Exchanger',
+            url: '',
+            start: '2019-08',
+            end: '2020-05',
+            description:
+                'Final year BE project - designed a multifluid heat exchanger and validated its thermal and hydraulic performance through process simulation in DWSIM.\nPerformed mass and energy balance, LMTD and heat duty calculations, heat transfer area sizing and pressure drop estimation across multiple fluid streams.\nAnalysed the effect of flow arrangement and operating conditions on heat recovery and overall exchanger efficiency.',
+        },
+        {
+            title: 'Industrial Training - Production of Nitrosyl Sulfuric Acid',
+            url: '',
+            start: '2019-06',
+            end: '2019-06',
+            description:
+                'Plant training at Aceto Chem Pvt. Ltd. covering the nitrosyl sulfuric acid manufacturing route - raw material handling, reaction section, absorption, process control parameters and safety interlocks.\nStudied the plant P&ID, utility network and hazardous chemical handling and storage practices.',
+        },
+        {
+            title: 'Production Reporting and Documentation Tooling (self-built)',
+            url: '',
+            start: '',
+            end: '',
+            description:
+                'Applied software experience to build data-entry, validation and reporting tools with audit trails and controlled user access - directly relevant to electronic batch records, LIMS / MES support and computer system validation (CSV) work in regulated pharmaceutical manufacturing.',
+        },
+    ],
+    skills: {
+        skills:
+            'Production and Manufacturing: API / bulk drug batch manufacturing, raw material and solvent charging, reaction monitoring, work-up and layer separation, distillation, solvent recovery, crystallisation, filtration, centrifugation, vacuum and tray drying, yield improvement, cycle-time reduction, shift production planning\nEquipment Handled: stainless steel reactor, glass-lined reactor, agitated nutsche filter dryer (ANFD), stainless steel centrifuge, sparkler filter, Nutsche filter, vacuum tray dryer (VTD), Nauta dryer, wiped film evaporator (WFE), dry vacuum system, condensers, receivers and scrubbers\nQuality and Compliance: cGMP, Schedule M, BMR / BPR review and release, SOP preparation and revision, line clearance and area clearance, in-process control (IPC), deviation and incident reporting, CAPA, change control, OOS / OOT support, QMS documentation, data integrity (ALCOA+), 21 CFR Part 11 awareness, audit readiness (USFDA, EU-GMP, WHO-GMP, customer and internal audits)\nSafety and Environment: process safety, MSDS and chemical hazard handling, PPE compliance, work permit system, lock-out tag-out, spill and emergency response, hazardous waste handling, ETP coordination, zero-accident shop-floor practice\nOperations and People: shift handover, production target achievement, operator and contract manpower supervision, cross-functional coordination with QA / QC / Engineering / Stores / EHS, logbook and documentation control, 5S, housekeeping, preventive maintenance coordination, balance and instrument calibration verification\nEngineering Fundamentals: heat and mass transfer, fluid mechanics, chemical reaction engineering, unit operations, process design and simulation, mass and energy balance, P&ID interpretation, plant utilities (steam, chilled brine, nitrogen, cooling water, vacuum)\nData and Digital: advanced Microsoft Excel, production data analysis and MIS reporting, process digitisation, SAP / ERP awareness, LIMS and MES concepts, computer system validation (CSV / GAMP 5) awareness, dashboard and report building, SQL',
+    },
+    tools: {
+        tools:
+            'Process simulation: DWSIM\nDocumentation and reporting: Microsoft Excel (advanced), Microsoft Word, Microsoft PowerPoint\nPlant systems: SAP / ERP (awareness), electronic logbook and controlled documentation systems\nData and automation (from software experience): SQL, JavaScript / TypeScript, React.js, Node.js, MongoDB, Git - used to build reporting, validation and workflow-automation tools',
+    },
+    certificates: [
+        {
+            title: 'BE Chemical Engineering - 9.18 CGPA (Distinction)',
+            issuer: 'Gujarat Technological University',
+            date: '2020-08',
+        },
+        {
+            title: 'Dedicated Employee Award',
+            issuer: 'Praveen Laboratories Pvt. Ltd.',
+            date: '2021-11',
+        },
+        {
+            title: 'Coordinator and Sub-Coordinator, State-Level Technical Festivals',
+            issuer: 'Gujarat Technological University',
+            date: '',
+        },
+        {
+            title: 'Participant, National and State-Level Technical Festivals and Workshops',
+            issuer: '',
+            date: '',
+        },
+    ],
+    languages: [
+        {
+            language: 'English',
+            proficiency: 'Professional Working Proficiency',
+        },
+        {
+            language: 'Hindi',
+            proficiency: 'Full Professional Proficiency',
+        },
+        {
+            language: 'Gujarati',
+            proficiency: 'Full Professional Proficiency',
+        },
+        {
+            language: 'Odia',
+            proficiency: 'Native or Bilingual Proficiency',
+        },
+    ],
+    saved: true,
+};
+
+/* ------------------------------------------------------------------ */
 /*  2. Helpers                                                         */
 /* ------------------------------------------------------------------ */
 
 const PROFILE_45_ID = 'profile-4-5-years';
 const PROFILE_25_ID = 'profile-2-5-years';
 const PROFILE_TALLEFLOW_ID = 'profile-talleflow-25yr';
+const PROFILE_OVERALL_ID = 'profile-overall-chemical';
 
 const deepClone = obj => JSON.parse(JSON.stringify(obj));
 
@@ -545,6 +730,7 @@ const resumeSlice = createSlice({
             [PROFILE_45_ID]: deepClone(profile45),
             [PROFILE_25_ID]: deepClone(profile25),
             [PROFILE_TALLEFLOW_ID]: deepClone(profile25Talleflow),
+            [PROFILE_OVERALL_ID]: deepClone(profileOverall),
         },
         activeProfileId: PROFILE_45_ID,
     },
@@ -651,6 +837,8 @@ const resumeSlice = createSlice({
                 state.profiles[PROFILE_25_ID] = deepClone(profile25);
             } else if (sourceId === PROFILE_TALLEFLOW_ID) {
                 state.profiles[PROFILE_TALLEFLOW_ID] = deepClone(profile25Talleflow);
+            } else if (sourceId === PROFILE_OVERALL_ID) {
+                state.profiles[PROFILE_OVERALL_ID] = deepClone(profileOverall);
             } else if (sourceId && state.profiles[sourceId]) {
                 // Clear all sections but keep the meta name
                 const name = state.profiles[sourceId].meta.name;

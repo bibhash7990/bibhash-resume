@@ -3,7 +3,7 @@ import { StyleSheet } from '@react-pdf/renderer';
 const styles = StyleSheet.create({
     page: {
         backgroundColor: '#ffffff',
-        color: '#555',
+        color: '#000',
         paddingVertical: 18,
         paddingHorizontal: 22,
         fontFamily: 'Times-Roman',
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     header__links: {
-        color: '#555',
+        color: '#000',
         fontSize: 10,
         display: 'flex',
         flexDirection: 'row',
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 
     education_note: {
         fontSize: 8.5,
-        color: '#666',
+        color: '#333',
         fontFamily: 'Times-Italic',
         marginTop: 3,
         marginBottom: 1,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: 'Times-Bold',
         marginRight: 'auto',
-        color: '#555',
+        color: '#000',
     },
     date: {
         fontFamily: 'Times-Italic',
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#eee',
     },
     link: {
-        color: '#666',
+        color: '#000',
     },
 });
 

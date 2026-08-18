@@ -59,6 +59,13 @@ function ResumePdfViewer() {
 
     const template = resumeData?.meta?.template || 'format1';
 
+    // A profile can pin itself to a subset of layouts (meta.allowedTemplates).
+    // Resumes written for one specific layout break when rendered through
+    // another, so the switcher hides the options that do not apply.
+    const allowed = resumeData?.meta?.allowedTemplates;
+    const templateOptions =
+        allowed?.length ? TEMPLATE_OPTIONS.filter(({ id }) => allowed.includes(id)) : TEMPLATE_OPTIONS;
+
     const handleTemplateChange = val => {
         dispatch(
             updateResumeValue({
@@ -74,8 +81,8 @@ function ResumePdfViewer() {
             {/* Template Switcher */}
             <div className="mb-4 flex flex-col gap-2 rounded-lg border border-gray-700 bg-gray-800/80 p-3 shadow-md backdrop-blur-sm">
                 <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">Layout Format</span>
-                <div className="grid grid-cols-2 gap-2">
-                    {TEMPLATE_OPTIONS.map(({ id, label }) => (
+                <div className={`grid gap-2 ${templateOptions.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                    {templateOptions.map(({ id, label }) => (
                         <button
                             key={id}
                             type="button"

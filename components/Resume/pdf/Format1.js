@@ -81,7 +81,7 @@ const Projects = ({ data }) => (
                     <Link
                         style={{
                             textDecoration: 'none',
-                            color: '#666',
+                            color: '#000',
                         }}
                         src={project.url}
                     >

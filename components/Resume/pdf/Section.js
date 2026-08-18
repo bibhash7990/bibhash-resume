@@ -4,14 +4,14 @@ const Section = ({ title, style, children }) => {
     const styles = StyleSheet.create({
         section_title: {
             textTransform: 'uppercase',
-            color: '#333',
+            color: '#000',
             fontSize: 11.5,
         },
 
         section_title_underline: {
             height: 1,
             margin: '2px 0px 3px 0px',
-            backgroundColor: '#888',
+            backgroundColor: '#000',
         },
     });
 
