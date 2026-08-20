@@ -18,6 +18,11 @@ const TEMPLATE_OPTIONS = [
     { id: 'format2', label: 'Format 2 (One-page)' },
     { id: 'format3', label: 'Format 3 (Merged)' },
     { id: 'format4', label: 'Format 4 (Full Stack)' },
+    { id: 'europass', label: 'Europass CV (EU)' },
+    { id: 'gcc', label: 'Gulf / GCC CV' },
+    { id: 'lebenslauf', label: 'German Lebenslauf' },
+    { id: 'anz', label: 'Australia / NZ Resume' },
+    { id: 'japan', label: 'Japan CV' },
 ];
 
 const Loader = () => (
@@ -63,8 +68,13 @@ function ResumePdfViewer() {
     // Resumes written for one specific layout break when rendered through
     // another, so the switcher hides the options that do not apply.
     const allowed = resumeData?.meta?.allowedTemplates;
-    const templateOptions =
-        allowed?.length ? TEMPLATE_OPTIONS.filter(({ id }) => allowed.includes(id)) : TEMPLATE_OPTIONS;
+    // A profile may also rename the layouts for its own purpose - e.g. tagging
+    // each one with the country it targets, which the generic global labels
+    // cannot express.
+    const labelOverrides = resumeData?.meta?.templateLabels;
+    const templateOptions = (
+        allowed?.length ? TEMPLATE_OPTIONS.filter(({ id }) => allowed.includes(id)) : TEMPLATE_OPTIONS
+    ).map(opt => ({ ...opt, label: labelOverrides?.[opt.id] || opt.label }));
 
     const handleTemplateChange = val => {
         dispatch(
@@ -81,7 +91,7 @@ function ResumePdfViewer() {
             {/* Template Switcher */}
             <div className="mb-4 flex flex-col gap-2 rounded-lg border border-gray-700 bg-gray-800/80 p-3 shadow-md backdrop-blur-sm">
                 <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">Layout Format</span>
-                <div className={`grid gap-2 ${templateOptions.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                <div className={`grid gap-2 ${templateOptions.length > 4 ? 'grid-cols-1' : templateOptions.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
                     {templateOptions.map(({ id, label }) => (
                         <button
                             key={id}

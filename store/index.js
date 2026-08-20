@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import resumeReducer from './slices/resumeSlice';
 
 /** Bump when the state shape changes so clients reload fresh instead of loading stale localStorage. */
-export const RESUME_STORAGE_VERSION = 13;
+export const RESUME_STORAGE_VERSION = 17;
 
 const loadState = () => {
     if (typeof window === 'undefined') return undefined;

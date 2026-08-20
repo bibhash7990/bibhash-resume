@@ -154,7 +154,7 @@ const Header = ({ data }) => {
     );
 };
 
-const TechnicalSkills = ({ skillsData, toolsData }) => {
+const TechnicalSkills = ({ skillsData, toolsData, layout = 'mapped', title = 'Technical Skills' }) => {
     const skillLines = skillsData
         ?.split('\n')
         .map(l => l.trim())
@@ -166,6 +166,44 @@ const TechnicalSkills = ({ skillsData, toolsData }) => {
         .filter(Boolean) || [];
 
     const allLines = [...skillLines, ...toolLines];
+
+    // 'verbatim' keeps the author's own categories and order. The mapped path
+    // below buckets everything into a fixed set of software headings, which
+    // silently drops any category it does not recognise - fine for a pure
+    // software CV, wrong for a resume that also carries another domain.
+    if (layout === 'verbatim') {
+        const rows = allLines
+            .map(line => {
+                const colonIndex = line.indexOf(':');
+                if (colonIndex === -1) return { category: '', value: line };
+                return {
+                    category: line.substring(0, colonIndex).trim(),
+                    value: line.substring(colonIndex + 1).trim(),
+                };
+            })
+            .filter(r => r.value);
+
+        return (
+            <View style={styles.section}>
+                <View style={styles.sectionTitleContainer}>
+                    <Text style={styles.sectionTitle}>{title}</Text>
+                </View>
+                <View style={styles.bulletList}>
+                    {rows.map((r, i) => (
+                        <View key={i} style={styles.bulletRow}>
+                            <Text style={styles.bulletPoint}>{'\u2022'}</Text>
+                            <Text style={styles.bulletText}>
+                                {r.category ?
+                                    <Text style={{ fontFamily: 'Helvetica-Bold' }}>{r.category}: </Text>
+                                :   null}
+                                <Text>{r.value}</Text>
+                            </Text>
+                        </View>
+                    ))}
+                </View>
+            </View>
+        );
+    }
 
     const parsedSkills = {};
     allLines.forEach(line => {
@@ -224,7 +262,7 @@ const TechnicalSkills = ({ skillsData, toolsData }) => {
     return (
         <View style={styles.section}>
             <View style={styles.sectionTitleContainer}>
-                <Text style={styles.sectionTitle}>Technical Skills</Text>
+                <Text style={styles.sectionTitle}>{title}</Text>
             </View>
             <View style={styles.bulletList}>
                 {groupedSkills.map((g, i) => (
@@ -241,7 +279,7 @@ const TechnicalSkills = ({ skillsData, toolsData }) => {
     );
 };
 
-const Experience = ({ experienceData }) => {
+const Experience = ({ experienceData, curatedProjects = true }) => {
     const is45Years = experienceData.some(exp => 
         exp.company?.toLowerCase().includes('3elixir') && 
         exp.start === '2021-11'
@@ -263,7 +301,24 @@ const Experience = ({ experienceData }) => {
                 
                 let customContent = null;
                 
-                if (companyLower.includes('techfidants')) {
+                if (!curatedProjects) {
+                    // Render only what the profile itself states, so no single
+                    // employer or industry gets expanded over the others.
+                    customContent = (
+                        <View style={styles.bulletList}>
+                            {description
+                                ?.split('\n')
+                                .map(l => l.trim())
+                                .filter(Boolean)
+                                .map((bullet, j) => (
+                                    <View key={j} style={styles.bulletRow}>
+                                        <Text style={styles.bulletPoint}>{'\u2022'}</Text>
+                                        <Text style={styles.bulletText}>{bullet}</Text>
+                                    </View>
+                                ))}
+                        </View>
+                    );
+                } else if (companyLower.includes('techfidants')) {
                     customContent = (
                         <View style={{ marginTop: 2 }}>
                             <View style={{ marginBottom: 3 }}>
@@ -598,7 +653,13 @@ const Education = ({ data }) => {
 };
 
 const Format2Resume = ({ data }) => {
-    const { contact, education, experience, summary, skills, tools } = data;
+    const { contact, education, experience, summary, skills, tools, meta } = data;
+
+    // Defaults preserve the existing software-CV behaviour; a profile spanning
+    // more than one industry opts out via its meta block.
+    const curatedProjects = meta?.curatedProjects !== false;
+    const skillsLayout = meta?.skillsLayout || 'mapped';
+    const skillsTitle = meta?.skillsTitle || 'Technical Skills';
 
     return (
         <Document language="en">
@@ -615,11 +676,16 @@ const Format2Resume = ({ data }) => {
                 )}
 
                 {(skills?.skills || tools?.tools) && (
-                    <TechnicalSkills skillsData={skills?.skills} toolsData={tools?.tools} />
+                    <TechnicalSkills
+                        skillsData={skills?.skills}
+                        toolsData={tools?.tools}
+                        layout={skillsLayout}
+                        title={skillsTitle}
+                    />
                 )}
 
                 {experience?.length > 0 && (
-                    <Experience experienceData={experience} />
+                    <Experience experienceData={experience} curatedProjects={curatedProjects} />
                 )}
 
                 {education?.length > 0 && <Education data={education} />}

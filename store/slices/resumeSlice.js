@@ -508,8 +508,166 @@ const profile25Talleflow = {
 /*      parsing; every employer kept so the timeline matches PF/UAN.   */
 /* ------------------------------------------------------------------ */
 
+/* Neutral, dual-industry skill set shared by the market layouts that show
+ * both careers without favouring either. Defined once so the wording cannot
+ * drift apart between formats. */
+const OVERALL_SKILLS_NEUTRAL =
+    'Chemical and Pharmaceutical Production: API / bulk drug batch manufacturing, raw material and solvent charging, reaction monitoring, work-up and layer separation, distillation, solvent recovery, crystallisation, filtration, centrifugation, vacuum drying, shift production planning, yield and cycle-time improvement\nProcess Equipment: stainless steel and glass-lined reactors, agitated nutsche filter dryer (ANFD), stainless steel centrifuge, sparkler filter, Nutsche filter, vacuum tray dryer, Nauta dryer, wiped film evaporator, dry vacuum system\nGMP and Compliance: cGMP, BMR / BPR review, SOP preparation and revision, line and area clearance, in-process control (IPC), deviation and incident reporting, CAPA, change control, QMS documentation, data integrity (ALCOA+), 21 CFR Part 11, audit readiness (USFDA, EU-GMP, WHO-GMP)\nProcess Safety and Environment: MSDS and chemical hazard handling, PPE compliance, work permit system, lock-out tag-out, spill and emergency response, hazardous waste handling, ETP coordination\nChemical Engineering Fundamentals: heat and mass transfer, fluid mechanics, chemical reaction engineering, unit operations, process design and simulation, mass and energy balance, P&ID interpretation, plant utilities\nLanguages and Frameworks: JavaScript (ES6+), TypeScript, React.js, Next.js, HTML5, CSS3, Tailwind CSS, Radix UI, shadcn/ui, Material UI, Framer Motion\nBackend and Databases: Node.js, Express.js, Hapi.js, REST API design, JWT, Joi / Zod validation, MongoDB, Mongoose, SQL, MySQL, PostgreSQL, schema design, indexing and query optimisation\nState, Forms and Testing: Redux Toolkit, Zustand, TanStack React Query, React Hook Form, Yup, Vitest, Playwright\nIntegrations and Automation: OAuth 2.0 (Google, Gmail, Clerk), Stripe, AWS S3, Twilio, Nodemailer, Trigger.dev, node-cron, Razorpay\nDelivery and Collaboration: Git, GitHub, CI/CD (Vercel, Netlify, Railway), Agile / Scrum, Jira, ClickUp, peer code review';
+
+const OVERALL_TOOLS_NEUTRAL =
+    'Engineering and documentation: DWSIM, Microsoft Excel (advanced), Microsoft Word, Microsoft PowerPoint\nDevelopment and debugging: Visual Studio Code, Cursor, Postman, Figma, ESLint, Prettier, Chrome DevTools';
+
 const profileOverall = {
-    meta: { name: 'Overall Experience', template: 'format1', allowedTemplates: ['format1'] },
+    meta: {
+        name: 'Overall Experience',
+        template: 'format1',
+        allowedTemplates: ['format1', 'format2', 'europass', 'gcc', 'lebenslauf', 'anz', 'japan'],
+        // Each layout targets a different hiring market and they expect
+        // genuinely different documents - a Gulf CV wants the personal details
+        // an Australian one must not carry. Labelled by destination so the
+        // right file goes to the right country.
+        templateLabels: {
+            format1: 'Format 1 - India / Domestic (Chemical)',
+            format2: 'Format 2 - US / UK / Canada (Anglo)',
+            europass: 'Format 3 - Europe (Europass EU)',
+            gcc: 'Format 4 - Gulf (UAE, Saudi, Qatar)',
+            lebenslauf: 'Format 5 - Germany / Austria / Swiss',
+            anz: 'Format 6 - Australia / New Zealand',
+            japan: 'Format 7 - Japan',
+        },
+        // This profile spans two industries, so Format 2 must not expand one
+        // employer's projects over the others, and must not funnel skills
+        // through software-only category headings.
+        curatedProjects: false,
+        skillsLayout: 'verbatim',
+        skillsTitle: 'Core Skills',
+        // Format 1 is aimed at chemical/pharma openings and states a target
+        // role. Format 2 is the neutral whole-career CV: both industries given
+        // equal weight, no target role stated.
+        templateOverrides: {
+            format2: {
+                contact: {
+                    title: 'Full Stack Developer | Chemical Engineer',
+                },
+                summary: {
+                    summary:
+                        'Engineer with 4.5 years of combined professional experience across pharmaceutical manufacturing and software development. Two years in API and bulk drug production at Sun Pharmaceutical Industries Ltd. and Praveen Laboratories Pvt. Ltd., covering shift operations on stainless steel and glass-lined reactors, ANFD, centrifuges and vacuum dryers under cGMP, with BMR / BPR review, in-process monitoring, deviation and CAPA handling, and USFDA / EU-GMP audit participation. Two and a half years as a full stack developer at Techfidants and Sourcecube Technology, building production web applications with React, TypeScript, Node.js and MongoDB, covering REST API design, third-party integrations, background automation and audit-trailed, role-controlled systems. BE in Chemical Engineering, 9.18 CGPA, Gujarat Technological University.',
+                },
+                skills: { skills: OVERALL_SKILLS_NEUTRAL },
+                tools: { tools: OVERALL_TOOLS_NEUTRAL },
+            },
+            // Europass carries personal fields the other layouts deliberately
+            // omit. Work authorisation is stated up front because EU employers
+            // screen on it, and finding out late wastes both sides' time.
+            europass: {
+                contact: {
+                    title: 'Chemical Engineer | Full Stack Developer',
+                },
+                personal: {
+                    address: 'Surat, Gujarat, India',
+                    dateOfBirth: '15/06/1999',
+                    nationality: 'Indian',
+                    workAuthorisation:
+                        'Non-EU national. Requires employer sponsorship for an EU work permit or EU Blue Card. Open to relocation across the EU.',
+                },
+                summary: {
+                    summary:
+                        'Chemical engineer (BE, EQF level 6, 9.18/10) with 4.5 years of combined professional experience across pharmaceutical manufacturing and software development. Two years in active pharmaceutical ingredient (API) and bulk drug production at Sun Pharmaceutical Industries Ltd. and Praveen Laboratories Pvt. Ltd., covering shift operations on stainless steel and glass-lined reactors, agitated nutsche filter dryers, centrifuges and vacuum dryers under EU-GMP and cGMP conditions, together with batch record review, in-process monitoring, deviation and CAPA handling and regulatory audit preparation. Two and a half years as a full stack developer at Techfidants and Sourcecube Technology, building production web applications with React, TypeScript, Node.js and MongoDB, including REST API design, third-party integrations, background automation and audit-trailed, role-controlled systems aligned with electronic record principles. Comfortable working in English in international, cross-functional teams.',
+                },
+                skills: {
+                    skills:
+                        'Pharmaceutical and chemical production: API and bulk drug batch manufacturing, reaction monitoring, distillation, solvent recovery, crystallisation, filtration, centrifugation, vacuum drying, shift planning, yield and cycle-time improvement\nProcess equipment: stainless steel and glass-lined reactors, agitated nutsche filter dryer (ANFD), centrifuge, sparkler filter, Nutsche filter, vacuum tray dryer, Nauta dryer, wiped film evaporator, dry vacuum system\nQuality and regulatory: EU-GMP, cGMP, ICH Q7, batch manufacturing record review, standard operating procedures, in-process control, deviation and CAPA management, change control, data integrity (ALCOA+), 21 CFR Part 11, audit preparation (EU-GMP, US FDA, WHO-GMP)\nHealth, safety and environment: chemical hazard handling and safety data sheets, personal protective equipment, permit-to-work systems, lock-out tag-out, spill and emergency response, hazardous waste handling, effluent treatment coordination\nEngineering fundamentals: heat and mass transfer, fluid mechanics, chemical reaction engineering, unit operations, process design and simulation, mass and energy balance, piping and instrumentation diagrams, plant utilities\nSoftware engineering: JavaScript, TypeScript, React.js, Next.js, Node.js, Express.js, REST API design, MongoDB, SQL, automated testing (Vitest, Playwright), version control and continuous delivery\nTransferable and organisational: cross-functional coordination with quality, engineering and warehouse teams, technical documentation, shift handover and team supervision, structured problem solving, Agile delivery',
+                },
+                tools: {
+                    tools:
+                        'Process simulation and engineering: DWSIM\nOffice and reporting: Microsoft Excel (advanced), Microsoft Word, Microsoft PowerPoint\nEnterprise systems: SAP / ERP awareness, electronic batch record and controlled documentation systems\nSoftware development: Visual Studio Code, Git, GitHub, Postman, Figma, Node.js, MongoDB, SQL',
+                },
+            },
+
+            // Gulf recruiters filter on visa status at first scan, so it is
+            // stated plainly. Passport number, religion, height and weight are
+            // deliberately absent - legacy Gulf CV fields with no hiring value.
+            gcc: {
+                contact: {
+                    title: 'Chemical Engineer | Production Officer - API, Bulk Drug & Petrochemicals',
+                },
+                personal: {
+                    nationality: 'Indian',
+                    dateOfBirth: '15/06/1999',
+                    maritalStatus: 'Single',
+                    visaStatus: 'Requires employment visa sponsorship (currently in India, no GCC visa held)',
+                    address: 'Surat, Gujarat, India',
+                    noticePeriod: 'Immediately available',
+                    relocation: 'Yes - open to relocation across the GCC',
+                },
+                summary: {
+                    summary:
+                        'Chemical Engineer (BE, 9.18/10) with 2 years of hands-on production experience in active pharmaceutical ingredient (API) and bulk drug manufacturing at Sun Pharmaceutical Industries Ltd. and Praveen Laboratories Pvt. Ltd., plus 2.5 years in software engineering. Shop-floor experience covers shift operations on stainless steel and glass-lined reactors, agitated nutsche filter dryers, centrifuges, sparkler and Nutsche filters, vacuum tray and Nauta dryers and wiped film evaporators, together with batch record review, in-process monitoring, deviation and CAPA handling, permit-to-work systems and regulatory audit preparation under cGMP and EU-GMP. Sustained a zero reportable-accident record across shift operations. Additionally experienced in production data analysis, MIS reporting and digital documentation systems.',
+                },
+                skills: { skills: OVERALL_SKILLS_NEUTRAL },
+                tools: { tools: OVERALL_TOOLS_NEUTRAL },
+            },
+
+            lebenslauf: {
+                contact: {
+                    title: 'Chemical Engineer | Full Stack Developer',
+                },
+                personal: {
+                    address: 'Surat, Gujarat, India',
+                    dateOfBirth: '15/06/1999',
+                    placeOfBirth: 'India',
+                    nationality: 'Indian / indisch',
+                    workAuthorisation:
+                        'Non-EU national - requires visa sponsorship (EU Blue Card eligible on a qualifying offer)',
+                    signaturePlace: 'Surat, India',
+                },
+                summary: {
+                    summary:
+                        'Chemical engineer (BE, EQF level 6, final grade 9.18/10) with 4.5 years of combined professional experience. Two years in API and bulk drug production at Sun Pharmaceutical Industries Ltd. and Praveen Laboratories Pvt. Ltd., covering shift operations on stainless steel and glass-lined reactors, agitated nutsche filter dryers, centrifuges and vacuum dryers under cGMP and EU-GMP conditions, with batch record review, in-process control, deviation and CAPA handling and audit preparation. Two and a half years as a full stack developer building production web applications with React, TypeScript, Node.js and MongoDB, including audit-trailed and role-controlled systems. Working language English; willing to begin German language training (target B1) alongside the role.',
+                },
+                skills: { skills: OVERALL_SKILLS_NEUTRAL },
+                tools: { tools: OVERALL_TOOLS_NEUTRAL },
+            },
+
+            // Referees are left unnamed on purpose: real contacts must come
+            // from him, not be invented here.
+            anz: {
+                contact: {
+                    title: 'Chemical Engineer | Full Stack Developer',
+                },
+                personal: {
+                    workRights:
+                        'Work rights: Indian citizen, no current Australian or New Zealand work visa. Requires employer sponsorship; eligible to apply for skilled visa streams.',
+                    referees: [],
+                },
+                summary: {
+                    summary:
+                        'Chemical engineer with 4.5 years of combined professional experience across pharmaceutical manufacturing and software development. Two years as a production officer in API and bulk drug manufacturing at Sun Pharmaceutical Industries Ltd. and Praveen Laboratories Pvt. Ltd., running shift operations on reactors, filter dryers, centrifuges and vacuum dryers under cGMP, with batch documentation review, in-process monitoring, deviation and CAPA management, permit-to-work compliance and regulatory audit preparation. Two and a half years as a full stack developer delivering production web applications with React, TypeScript, Node.js and MongoDB, including REST API design, integrations, automation and audit-trailed systems. Strong record in safety compliance, cross-functional coordination and technical documentation.',
+                },
+                skills: { skills: OVERALL_SKILLS_NEUTRAL },
+                tools: { tools: OVERALL_TOOLS_NEUTRAL },
+            },
+
+            japan: {
+                contact: {
+                    title: 'Chemical Engineer | Full Stack Developer',
+                },
+                personal: {
+                    dateOfBirth: '15/06/1999',
+                    nationality: 'Indian',
+                    address: 'Surat, Gujarat, India',
+                    visaStatus: 'No current Japan visa - requires employer sponsorship (Engineer / Specialist in Humanities visa category)',
+                    japaneseLevel: 'No JLPT certification at present; applying for English-language roles and prepared to begin Japanese study',
+                },
+                summary: {
+                    summary:
+                        'I am a chemical engineer with 4.5 years of combined experience in pharmaceutical manufacturing and software development. In my first two years I worked as a production officer in API and bulk drug manufacturing, where I learned to operate reactors, filter dryers and centrifuges under strict cGMP conditions, to record every step accurately in batch records, and to report and investigate any deviation immediately rather than resolve it informally. That discipline of accurate documentation and continuous improvement is what I value most from that period. I then spent two and a half years as a full stack developer, building production web applications with React, TypeScript, Node.js and MongoDB, including systems with audit trails and controlled user access. I would like to bring both the manufacturing discipline and the technical skill to a role where process quality and reliable systems matter, and I am committed to learning the language and working practices of the company I join.',
+                },
+                skills: { skills: OVERALL_SKILLS_NEUTRAL },
+                tools: { tools: OVERALL_TOOLS_NEUTRAL },
+            },
+        },
+    },
     contact: {
         name: 'Bibhash Lenka',
         email: 'bibhash88lenka@gmail.com',
@@ -533,11 +691,13 @@ const profileOverall = {
             end: '2020-08',
             location: 'Navsari, Gujarat',
             gpa: '9.18/10',
+            eqf: '6 (Bachelor)',
             note: 'Core discipline: chemical engineering. Worked 2 years in API / bulk drug production (2020-2022), then 2.5 years in software engineering (2023-2026); now returning to chemical and pharmaceutical manufacturing with added data, documentation and digital-systems capability.',
         },
         {
             degree: 'Higher Secondary Certificate (Science) - 78%',
             institution: 'Gyan Jyot Vidyalaya (G.S.E.B.)',
+            eqf: '4 (Upper secondary)',
             start: '2014-06',
             end: '2016-08',
             location: 'Surat, Gujarat',
@@ -545,6 +705,7 @@ const profileOverall = {
         {
             degree: 'Secondary School Certificate - 75%',
             institution: 'Adarsh Hindi Vidyalaya (G.S.E.B.)',
+            eqf: '2 (Lower secondary)',
             start: '2013-06',
             end: '2014-06',
             location: 'Surat, Gujarat',
@@ -554,6 +715,7 @@ const profileOverall = {
         {
             role: 'Software Developer (Full-Stack)',
             company: 'Techfidants',
+            sector: 'Computer programming, consultancy and related activities',
             location: 'Surat, Gujarat',
             start: '2025-07',
             end: '2026-05',
@@ -563,6 +725,7 @@ const profileOverall = {
         {
             role: 'Junior Software Developer',
             company: 'Sourcecube Technology Pvt. Ltd.',
+            sector: 'Computer programming, consultancy and related activities',
             location: 'Surat, Gujarat',
             start: '2023-11',
             end: '2025-06',
@@ -572,6 +735,7 @@ const profileOverall = {
         {
             role: 'Junior Software Developer Trainee',
             company: '3Elixir Software Solution',
+            sector: 'Computer programming, consultancy and related activities',
             location: 'Surat, Gujarat',
             start: '2023-09',
             end: '2023-10',
@@ -581,6 +745,7 @@ const profileOverall = {
         {
             role: 'Career Transition - Full-Time Technical Upskilling',
             company: 'Self-Directed Study',
+            sector: 'Professional development and training',
             location: 'Surat, Gujarat',
             start: '2023-01',
             end: '2023-08',
@@ -590,6 +755,7 @@ const profileOverall = {
         {
             role: 'Production Officer - API / Bulk Drug Manufacturing',
             company: 'Sun Pharmaceutical Industries Ltd.',
+            sector: 'Manufacture of basic pharmaceutical products and preparations - API and bulk drugs',
             location: 'Panoli, Ankleshwar, Gujarat',
             start: '2022-05',
             end: '2022-12',
@@ -599,6 +765,7 @@ const profileOverall = {
         {
             role: 'Trainee Chemist - Production',
             company: 'Praveen Laboratories Pvt. Ltd.',
+            sector: 'Manufacture of basic pharmaceutical products and preparations - API and bulk drugs',
             location: 'Jolva, Kadodara, Gujarat',
             start: '2020-11',
             end: '2022-05',
@@ -666,18 +833,34 @@ const profileOverall = {
         {
             language: 'English',
             proficiency: 'Professional Working Proficiency',
+            listening: 'B2',
+            reading: 'B2',
+            spokenInteraction: 'B2',
+            spokenProduction: 'B2',
+            writing: 'B2',
         },
         {
             language: 'Hindi',
             proficiency: 'Full Professional Proficiency',
+            listening: 'C2',
+            reading: 'C1',
+            spokenInteraction: 'C2',
+            spokenProduction: 'C2',
+            writing: 'C1',
         },
         {
             language: 'Gujarati',
             proficiency: 'Full Professional Proficiency',
+            listening: 'C1',
+            reading: 'B2',
+            spokenInteraction: 'C1',
+            spokenProduction: 'C1',
+            writing: 'B2',
         },
         {
             language: 'Odia',
             proficiency: 'Native or Bilingual Proficiency',
+            motherTongue: true,
         },
     ],
     saved: true,
