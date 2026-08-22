@@ -23,6 +23,7 @@ const TEMPLATE_OPTIONS = [
     { id: 'lebenslauf', label: 'German Lebenslauf' },
     { id: 'anz', label: 'Australia / NZ Resume' },
     { id: 'japan', label: 'Japan CV' },
+    { id: 'cruise', label: 'Cruise Ship CV' },
 ];
 
 const Loader = () => (

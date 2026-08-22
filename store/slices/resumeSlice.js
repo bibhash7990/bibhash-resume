@@ -867,6 +867,169 @@ const profileOverall = {
 };
 
 /* ------------------------------------------------------------------ */
+/*  1d. Profile - Cruise ship / seafarer                               */
+/*      Targets Environmental Officer (the chemical engineering route:  */
+/*      MARPOL, Garbage and Chemical Management Plans, wastewater) and  */
+/*      Assistant IT Officer (the software route). Shore experience is  */
+/*      rewritten against shipboard duties rather than reused verbatim. */
+/*                                                                      */
+/*      No STCW, CDC or medical certificate numbers are stated because  */
+/*      none are held yet. Inventing one is document fraud and ends a    */
+/*      maritime career permanently, so statuses read "to be obtained",  */
+/*      which is normal and expected for a first-contract applicant.     */
+/* ------------------------------------------------------------------ */
+
+const profileCruise = {
+    meta: {
+        name: 'Cruise Ship',
+        template: 'cruise',
+        allowedTemplates: ['cruise'],
+        templateLabels: { cruise: 'Cruise Ship CV (Seafarer)' },
+    },
+    contact: {
+        name: 'Bibhash Lenka',
+        email: 'bibhash88lenka@gmail.com',
+        phone: '+91 7990721091',
+        title: 'Environmental Officer (Trainee) / Assistant IT Officer',
+        linkedin: 'https://www.linkedin.com/in/bibhash-dev/',
+        github: '',
+        blogs: '',
+        twitter: '',
+        portfolio: '',
+    },
+    personal: {
+        address: 'Surat, Gujarat, India',
+        dateOfBirth: '15/06/1999',
+        nationality: 'Indian',
+        maritalStatus: 'Single',
+        availability: 'Immediately available - able to join at short notice',
+        contractPreference: 'Open to standard 6-8 month contracts, any vessel, any itinerary',
+        medical: 'Fit and healthy; ENG1 / seafarer medical to be completed on request',
+        nextOfKin: 'Jatindra Nath Lenka (father) - contact details available on request',
+        seaServiceNote:
+            'No prior sea service. Applying for a first shipboard contract. Two years of continuous rotating-shift work in a hazardous-chemical manufacturing plant, including night shifts, permit-to-work systems, confined-space procedures and emergency response, is offered as directly comparable operational discipline.',
+        documentsNote:
+            'STCW Basic Safety Training, Seafarer Identity Document (CDC) and seafarer medical will be obtained at own cost prior to joining, on receipt of a conditional offer or letter of employment.',
+        documents: [
+            { name: 'Passport (Indian)', detail: 'Valid', status: 'Held', held: true },
+            {
+                name: 'Bachelor of Engineering - Chemical Engineering',
+                detail: 'Gujarat Technological University',
+                status: 'Held - 9.18/10',
+                held: true,
+            },
+            { name: "Seafarer's Identity Document / CDC", detail: 'Seaman Book', status: 'To be obtained' },
+            {
+                name: 'STCW Basic Safety Training (STCW A-VI/1)',
+                detail: 'PST, FPFF, EFA, PSSR',
+                status: 'To be completed prior to joining',
+            },
+            { name: 'STCW Security Awareness (A-VI/6-1)', detail: '-', status: 'To be completed prior to joining' },
+            { name: 'STCW Crowd Management', detail: 'Passenger ship', status: 'To be completed prior to joining' },
+            { name: 'Seafarer Medical Certificate', detail: 'ENG1 or equivalent', status: 'To be completed on request' },
+            { name: 'Yellow Fever / vaccination record', detail: '-', status: 'To be completed on request' },
+        ],
+        seaService: [],
+    },
+    summary: {
+        summary:
+            'Chemical Engineer (BE, 9.18/10) with 2 years of hands-on operations experience in pharmaceutical and chemical manufacturing and 2.5 years in software engineering, seeking a first shipboard contract as Environmental Officer (Trainee) or Assistant IT Officer. Plant experience covers effluent treatment plant coordination, hazardous waste segregation and manifesting, chemical inventory and safety data sheet control, waste stream monitoring and regulatory audit preparation - the shore equivalent of shipboard MARPOL, Garbage Management Plan and Chemical Management Plan duties. Accustomed to continuous rotating shifts including nights, permit-to-work and lock-out systems, confined-space entry procedures, spill and emergency response, and detailed compliance record keeping, with a sustained zero reportable-accident record. Additional strength in IT support, networking fundamentals and systems troubleshooting from 2.5 years of professional software development. Physically fit, adaptable to a multinational crew environment, and prepared to obtain all STCW certification prior to joining.',
+    },
+    education: [
+        {
+            degree: 'Bachelor of Engineering in Chemical Engineering',
+            institution: 'Prime Institute of Engineering and Technology (Gujarat Technological University)',
+            start: '2016-06',
+            end: '2020-08',
+            location: 'Navsari, Gujarat, India',
+            gpa: '9.18/10',
+        },
+        {
+            degree: 'Higher Secondary Certificate (Science) - 78%',
+            institution: 'Gyan Jyot Vidyalaya (G.S.E.B.)',
+            start: '2014-06',
+            end: '2016-08',
+            location: 'Surat, Gujarat, India',
+        },
+    ],
+    experience: [
+        {
+            role: 'Software Developer (Full-Stack) - IT Systems & Support',
+            company: 'Techfidants',
+            location: 'Surat, Gujarat, India',
+            sector: 'Information technology',
+            start: '2025-07',
+            end: '2026-05',
+            description:
+                'Built, deployed and supported business-critical web systems used daily by client staff, including user account and access administration, fault diagnosis and resolution under time pressure.\nProvided direct end-user support: reproduced reported faults, resolved software and configuration issues, and communicated fixes to non-technical users in plain English.\nAdministered authentication, role-based permissions and audit logging across multi-user systems.',
+        },
+        {
+            role: 'Junior Software Developer - Applications & User Support',
+            company: 'Sourcecube Technology Pvt. Ltd.',
+            location: 'Surat, Gujarat, India',
+            sector: 'Information technology',
+            start: '2023-11',
+            end: '2025-06',
+            description:
+                'Supported and maintained four production software systems, handling user-reported issues, data corrections and reporting requests.\nWorked to scheduled delivery cycles in a team environment with formal handover and review at each stage.',
+        },
+        {
+            role: 'Production Officer - Chemical & Pharmaceutical Manufacturing',
+            company: 'Sun Pharmaceutical Industries Ltd.',
+            location: 'Ankleshwar, Gujarat, India',
+            sector: 'Pharmaceutical and chemical manufacturing',
+            start: '2022-05',
+            end: '2022-12',
+            description:
+                'Coordinated effluent and waste streams with the Effluent Treatment Plant team, ensuring correct segregation, containment and routing of process effluent - directly comparable to shipboard wastewater and bilge management under MARPOL Annex IV.\nManaged hazardous waste segregation, labelling, storage on impervious flooring and transfer to authorised disposal facilities with full manifest documentation - the shore equivalent of a Garbage Record Book and Garbage Management Plan.\nMaintained chemical inventory and safety data sheet control, verified approved chemicals before use and quarantined non-approved material - directly comparable to a shipboard Chemical Management System.\nOperated on continuous rotating shifts including nights and weekends, supervising operators and contract crew in a hazardous-area environment.\nEnforced permit-to-work, lock-out tag-out, confined-space entry and hot-work controls; conducted spill response and emergency drills. Sustained a zero reportable-accident record.\nPrepared the plant for internal, customer and regulatory inspections, compiled compliance documentation and closed audit observations within agreed timelines.\nRecorded all operational data contemporaneously in controlled logbooks and batch records to strict data-integrity standards.',
+        },
+        {
+            role: 'Trainee Chemist - Production',
+            company: 'Praveen Laboratories Pvt. Ltd.',
+            location: 'Jolva, Kadodara, Gujarat, India',
+            sector: 'Pharmaceutical and chemical manufacturing',
+            start: '2020-11',
+            end: '2022-05',
+            description:
+                'Operated and monitored chemical process plant - reactors, filtration, centrifuges, distillation, solvent recovery and vacuum drying systems - to written procedures.\nMonitored critical operating parameters continuously and escalated any deviation immediately to the shift supervisor.\nHandled flammable, corrosive and toxic chemicals daily using safety data sheets, prescribed PPE and the permit-to-work system.\nMaintained equipment cleaning, area cleaning and instrument logbooks, and supported inspection readiness and procedure revision.',
+        },
+    ],
+    projects: [],
+    skills: {
+        skills:
+            'Environmental compliance (shore): effluent treatment plant coordination, waste stream segregation and monitoring, hazardous waste manifesting and disposal, chemical inventory and safety data sheet control, emission and discharge record keeping, regulatory inspection preparation\nDirectly transferable to shipboard duties: MARPOL awareness, Garbage Management Plan and Garbage Record Book principles, wastewater and effluent sampling, Chemical Management System control, ISO 14001 environmental management principles\nSafety and emergency response: permit-to-work systems, lock-out tag-out, confined-space entry, hot-work control, PPE compliance, spill containment and response, fire extinguisher classes and use, emergency drills, incident and near-miss reporting\nPlant and technical operations: process plant operation and monitoring, pumps, valves, heat exchangers, filtration and drying systems, utilities (steam, cooling water, compressed air, nitrogen, vacuum), instrument reading and verification, preventive maintenance coordination\nIT and computer: hardware and software troubleshooting, user account and access administration, network and connectivity fundamentals, database and reporting tools, Microsoft Office, incident logging and resolution\nShipboard-relevant working qualities: continuous rotating shift and night work, multinational team working, supervision of operators and contract crew, clear written and verbal reporting, contemporaneous record keeping, working calmly under operational pressure',
+    },
+    tools: {
+        tools:
+            'Documentation and reporting: Microsoft Excel (advanced), Microsoft Word, Microsoft PowerPoint\nSystems: SAP / ERP awareness, controlled electronic documentation and logbook systems\nIT and networking: Windows administration, user access management, SQL and database reporting, JavaScript, React.js, Node.js, MongoDB, Git\nEngineering: DWSIM process simulation',
+    },
+    certificates: [
+        {
+            title: 'BE Chemical Engineering - 9.18 CGPA (Distinction)',
+            issuer: 'Gujarat Technological University',
+            date: '2020-08',
+        },
+        {
+            title: 'Dedicated Employee Award',
+            issuer: 'Praveen Laboratories Pvt. Ltd.',
+            date: '2021-11',
+        },
+        {
+            title: 'Zero reportable-accident record across two years of hazardous-area shift operations',
+            issuer: '',
+            date: '',
+        },
+    ],
+    languages: [
+        { language: 'English', proficiency: 'Professional working proficiency - fluent, working language' },
+        { language: 'Hindi', proficiency: 'Full professional proficiency' },
+        { language: 'Gujarati', proficiency: 'Full professional proficiency' },
+        { language: 'Odia', proficiency: 'Native' },
+    ],
+    saved: true,
+};
+
+/* ------------------------------------------------------------------ */
 /*  2. Helpers                                                         */
 /* ------------------------------------------------------------------ */
 
@@ -874,6 +1037,7 @@ const PROFILE_45_ID = 'profile-4-5-years';
 const PROFILE_25_ID = 'profile-2-5-years';
 const PROFILE_TALLEFLOW_ID = 'profile-talleflow-25yr';
 const PROFILE_OVERALL_ID = 'profile-overall-chemical';
+const PROFILE_CRUISE_ID = 'profile-cruise-ship';
 
 const deepClone = obj => JSON.parse(JSON.stringify(obj));
 
@@ -914,6 +1078,7 @@ const resumeSlice = createSlice({
             [PROFILE_25_ID]: deepClone(profile25),
             [PROFILE_TALLEFLOW_ID]: deepClone(profile25Talleflow),
             [PROFILE_OVERALL_ID]: deepClone(profileOverall),
+            [PROFILE_CRUISE_ID]: deepClone(profileCruise),
         },
         activeProfileId: PROFILE_45_ID,
     },
@@ -1022,6 +1187,8 @@ const resumeSlice = createSlice({
                 state.profiles[PROFILE_TALLEFLOW_ID] = deepClone(profile25Talleflow);
             } else if (sourceId === PROFILE_OVERALL_ID) {
                 state.profiles[PROFILE_OVERALL_ID] = deepClone(profileOverall);
+            } else if (sourceId === PROFILE_CRUISE_ID) {
+                state.profiles[PROFILE_CRUISE_ID] = deepClone(profileCruise);
             } else if (sourceId && state.profiles[sourceId]) {
                 // Clear all sections but keep the meta name
                 const name = state.profiles[sourceId].meta.name;

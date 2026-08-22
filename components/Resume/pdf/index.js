@@ -9,6 +9,7 @@ import GccResume from './Gcc';
 import LebenslaufResume from './Lebenslauf';
 import AnzResume from './Anz';
 import JapanCvResume from './JapanCv';
+import CruiseShipResume from './CruiseShip';
 
 /**
  * A profile can carry different content per layout via meta.templateOverrides.
@@ -52,6 +53,10 @@ const Resume = ({ data: rawData }) => {
 
     if (template === 'japan') {
         return <JapanCvResume data={data} />;
+    }
+
+    if (template === 'cruise') {
+        return <CruiseShipResume data={data} />;
     }
 
     if (template === 'format4') {
